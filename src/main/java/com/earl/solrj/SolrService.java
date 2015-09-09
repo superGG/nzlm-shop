@@ -125,6 +125,30 @@ public class SolrService {
 
 		return beans;
 	}
+	
+	/**
+	 * 根据类别查询商品对象.
+	 * @param goods
+	 * 			获取商品类别.
+	 * @param type
+	 * 			需要查询类别.
+	 * @return beans
+	 * 			查询结果集.
+	 * @throws Exception
+	 */
+	public List<GoodsVo> queryBeans(GoodsVo goods, String type) throws Exception {
+		SolrQuery query = new SolrQuery();
+		String solr = "goodstype2:" + type;
+		if (goods.getGoodstype3() != null) {
+			solr = "goodstype3:" + type;
+		}
+		StringBuilder solrQuery = new StringBuilder();
+		solrQuery.append(solr);
+		query.setQuery(solrQuery.toString());
+		List<GoodsVo> beans = queryBeans(query);
+		return beans;
+	}
+	
 
 	/**
 	 * 通过类别和属性查询商品.
@@ -295,7 +319,8 @@ public class SolrService {
 		FacetFilter facetFilter = new FacetFilter();
 		SolrQuery solrQuery = new SolrQuery();
 
-		if (goods.getGoodstype1() == null) {
+		if (goods.getGoodstype1() == null && goods.getGoodstype2() == null 
+				&& goods.getGoodstype3() == null) {
 			solrQuery.setQuery("* : *");
 			facetFilter.addFacetField("goodstype1");
 		} else if (goods.getGoodstype1() != null
