@@ -13,7 +13,6 @@ import com.earl.solrj.query.pojo.GoodsPo;
 import com.earl.solrj.query.pojo.GoodsVo;
 import com.earl.util.ToJson;
 
-
 /**
  * 
  * 用途+action 如Demo+Action-->DemoAction
@@ -30,33 +29,29 @@ public class GoodsAction extends BaseAction<GoodsVo> {
 
 	protected InputStream jsonInputStream;
 
-
 	public InputStream getJsonInputStream() {
 		return jsonInputStream;
 	}
-    
-	
+
 	/**
 	 * 商品的List集合.
 	 */
 	private List<GoodsVo> GoodsVoList;
 
-	private SolrService solrUtil;
-	
-	private GoodsVo goodsVo;
+	private SolrService solrUtil = new SolrService();
 
-	private GoodsPo goodsPo;
-	
-	//查询的条件
+	private GoodsVo goodsVo = new GoodsVo();
+
+	private GoodsPo goodsPo = new GoodsPo();
+
+	// 查询的条件
 	private List<String> list;
-
-	
 
 	// 查询语句.
 	private SolrQuery queryStatement;
-	
-	//查询的结果集合.
-	private Map<String,List<String>> map;
+
+	// 查询的结果集合.
+	private Map<String, List<String>> map;
 
 	// 商品的属性.
 	private List<String> str;
@@ -64,37 +59,39 @@ public class GoodsAction extends BaseAction<GoodsVo> {
 	private float minPrice;
 	// 查询商品的最高价格.
 	private float maxPrice;
-	
-	//商品类型
-	private String type;
-	//商品关键字.
-	private String label;
-	//统计父类类别的集合.
-	private List<String> goodsTypes;
-	//统计该类别下的子类.
-	private String parentType;
-	//高亮查询结果集.
-	private List<Object> lightList;
-	//String数据封装
-	private String toJson;
-	
-	
 
-	
-	
-	
+	// 商品类型
+	private String type1;
+	// 商品类型
+	private String type2;
+	// 商品类型
+	private String type3;
+	// 商品标签.
+	private String label;
+	// 统计父类类别的集合.
+	private List<String> goodsTypes;
+	// 统计该类别下的子类.
+	private String parentType;
+	// 高亮查询结果集.
+	private List<Object> lightList;
+	// String数据封装
+	private String Jndata;
+	// 搜索的关键字
+	private String KeyWord;
+
 	/**
 	 * @return the String
 	 */
-	public final String gettoJson() {
-		return toJson;
+	public final String getJndata() {
+		return Jndata;
 	}
 
 	/**
-	 * @param String the String to set
+	 * @param String
+	 *            the String to set
 	 */
-	public final void settoJson(String toJson) {
-		this.toJson = toJson;
+	public final void setJndata(String Jndata) {
+		this.Jndata = Jndata;
 	}
 
 	/**
@@ -105,7 +102,8 @@ public class GoodsAction extends BaseAction<GoodsVo> {
 	}
 
 	/**
-	 * @param lightList the lightList to set
+	 * @param lightList
+	 *            the lightList to set
 	 */
 	public final void setLightList(List<Object> lightList) {
 		this.lightList = lightList;
@@ -119,7 +117,8 @@ public class GoodsAction extends BaseAction<GoodsVo> {
 	}
 
 	/**
-	 * @param goodsTypes the goodsTypes to set
+	 * @param goodsTypes
+	 *            the goodsTypes to set
 	 */
 	public final void setGoodsTypes(List<String> goodsTypes) {
 		this.goodsTypes = goodsTypes;
@@ -133,7 +132,8 @@ public class GoodsAction extends BaseAction<GoodsVo> {
 	}
 
 	/**
-	 * @param parentType the parentType to set
+	 * @param parentType
+	 *            the parentType to set
 	 */
 	public final void setParentType(String parentType) {
 		this.parentType = parentType;
@@ -147,7 +147,8 @@ public class GoodsAction extends BaseAction<GoodsVo> {
 	}
 
 	/**
-	 * @param label the label to set
+	 * @param label
+	 *            the label to set
 	 */
 	public final void setLabel(String label) {
 		this.label = label;
@@ -156,15 +157,16 @@ public class GoodsAction extends BaseAction<GoodsVo> {
 	/**
 	 * @return the type
 	 */
-	public final String getType() {
-		return type;
+	public final String getType1() {
+		return type1;
 	}
 
 	/**
-	 * @param type the type to set
+	 * @param type
+	 *            the type to set
 	 */
-	public final void setType(String type) {
-		this.type = type;
+	public final void setType1(String type1) {
+		this.type1 = type1;
 	}
 
 	/**
@@ -175,11 +177,13 @@ public class GoodsAction extends BaseAction<GoodsVo> {
 	}
 
 	/**
-	 * @param list the list to set
+	 * @param list
+	 *            the list to set
 	 */
 	public final void setList(List<String> list) {
 		this.list = list;
 	}
+
 	/**
 	 * @return the map
 	 */
@@ -188,7 +192,8 @@ public class GoodsAction extends BaseAction<GoodsVo> {
 	}
 
 	/**
-	 * @param map the map to set
+	 * @param map
+	 *            the map to set
 	 */
 	public final void setMap(Map<String, List<String>> map) {
 		this.map = map;
@@ -268,8 +273,6 @@ public class GoodsAction extends BaseAction<GoodsVo> {
 		return serialVersionUID;
 	}
 
-	
-
 	/**
 	 * 获取商品的list集合.
 	 * 
@@ -287,6 +290,22 @@ public class GoodsAction extends BaseAction<GoodsVo> {
 	 */
 	public final void setGoodsVoList(List<GoodsVo> goodsVoList) {
 		GoodsVoList = goodsVoList;
+	}
+
+	public String getType2() {
+		return type2;
+	}
+
+	public void setType2(String type2) {
+		this.type2 = type2;
+	}
+
+	public String getType3() {
+		return type3;
+	}
+
+	public void setType3(String type3) {
+		this.type3 = type3;
 	}
 
 	public GoodsPo getGoodsPo() {
@@ -313,6 +332,14 @@ public class GoodsAction extends BaseAction<GoodsVo> {
 		this.solrUtil = solrUtil;
 	}
 
+	public String getKeyWord() {
+		return KeyWord;
+	}
+
+	public void setKeyWord(String keyWord) {
+		KeyWord = keyWord;
+	}
+
 	// 下面填写业务逻辑
 
 	public String lala() throws UnsupportedEncodingException {
@@ -326,7 +353,7 @@ public class GoodsAction extends BaseAction<GoodsVo> {
 
 	// 添加索引.
 	public void addGoodsAction() throws Exception {
-		// TODO 从前端获取到的Po 转成 Vo 再进行,同时保存po到数据库
+		// 从前端获取到的Po 转成 Vo 再进行,同时保存po到数据库
 		solrUtil.addBeanIndex(goodsVo);
 	}
 
@@ -356,99 +383,110 @@ public class GoodsAction extends BaseAction<GoodsVo> {
 	// solrService.deleteByQuery(query);
 	// }
 
-	
 	/**
-	 * 根据类别查询商品的属性.
-	 * 赋值给Map<String,List<String>>
+	 * 根据类别查询商品的属性. 赋值给Map<String,List<String>>
+	 * 
 	 * @throws Exception
 	 */
-	public void GetAttrbutesAction () throws Exception {
-		if (goodsVo != null ) {
-			 map = solrUtil.getAttributesByType(goodsVo);
-			 toJson = ToJson.getGson().toJson(map);
+	public void GetAttrbutesAction() throws Exception {
+		if (goodsVo != null) {
+			goodsVo.setGoodstype2(type2);
+			map = solrUtil.getAttributesByType(goodsVo);
+			Jndata = ToJson.getGson().toJson(map);
 		} else {
-			return ;
+			return;
 		}
 	}
-	
+
 	/**
 	 * 查询价格区间的商品.
+	 * 
 	 * @throws Exception
 	 */
 	public void QueryByPriceAction() throws Exception {
-		if(list != null ) 
-			goodsVo.setGoodsattributes(list);
-		else {
+		goodsVo.setGoodstype2(type2);
+		goodsVo.setGoodsattributes(list);
+		if (minPrice != maxPrice && maxPrice > minPrice) {
+			GoodsVoList = solrUtil.queryBeans(goodsVo, minPrice, maxPrice);
+			Jndata = ToJson.getGson().toJson(GoodsVoList);
+		} else {
 			return;
 		}
-		if (minPrice != maxPrice && maxPrice > minPrice) {
-			GoodsVoList = solrUtil.queryBeans(goodsVo, minPrice,
-					maxPrice);
-			toJson = ToJson.getGson().toJson(GoodsVoList);
-		}  else {
-			return ;
+	}
+
+	public void QueryByAttributesAction() throws Exception {
+		goodsVo.setGoodstype2(type2);
+		goodsVo.setGoodsattributes(list);
+		if (list != null) {
+			GoodsVoList = solrUtil.queryBeans(goodsVo,
+					goodsVo.getGoodsattributes());
+			Jndata = ToJson.getGson().toJson(GoodsVoList);
+		} else {
+			return;
 		}
 	}
+
 	/**
-	 * 根据商品类型查询商品.
-	 * List<GoodsVo>
+	 * 根据商品类型查询商品. List<GoodsVo>
+	 * 
 	 * @throws Exception
 	 */
 	public void QueryWithTypeAction() throws Exception {
-		if (type != null ) {
-			goodsVo.setGoodstype2(type);
+		if (type2 != null) {
+			goodsVo.setGoodstype2(type2);
 			GoodsVoList = solrUtil.queryBeans(goodsVo);
-			toJson = ToJson.getGson().toJson(GoodsVoList);
+			Jndata = ToJson.getGson().toJson(GoodsVoList);
 		} else {
-			return ;
+			return;
 		}
 	}
-	
+
 	/**
 	 * 查询热点商品.
+	 * 
 	 * @throws Exception
 	 */
 	public void QueryHotAction() throws Exception {
 		goodsVo.setIshot(true);
 		GoodsVoList = solrUtil.queryBeans(goodsVo);
-		toJson = ToJson.getGson().toJson(GoodsVoList);
+		Jndata = ToJson.getGson().toJson(GoodsVoList);
 	}
-	
+
 	/**
-	 * 根据关键字查询商品.
-	 * 返回高亮集合.
-	 * List<Object>.
+	 * 根据关键字查询商品. 返回高亮集合. List<Object>.
+	 * 
 	 * @throws Exception
 	 */
-	public void QueryLabelAction() throws Exception {
-		if (label != null ) {
-			lightList = solrUtil.queryBean(label);
-			toJson = ToJson.getGson().toJson(lightList);
+	public void QueryKeyWordAction() throws Exception {
+		if (KeyWord != null) {
+			lightList = solrUtil.queryBean(KeyWord);
+			Jndata = ToJson.getGson().toJson(lightList);
 		} else {
-			return ;
+			return;
 		}
 	}
-    
+
 	/**
 	 * 统计父类别.
+	 * 
 	 * @throws Exception
 	 */
 	public void QueryWithFacet() throws Exception {
 		goodsVo = new GoodsVo();
 		goodsTypes = solrUtil.getGoodsType(goodsVo);
-		toJson = ToJson.getGson().toJson(goodsTypes);
+		this.Jndata = ToJson.getGson().toJson(goodsTypes);
 	}
-	
+
 	/**
 	 * 根据父类别统计子类别.
+	 * 
 	 * @throws Exception
 	 */
 	public void QueryWithFaceType() throws Exception {
-		if (parentType != null ) 
+		if (parentType != null)
 			goodsVo.setGoodstype1(parentType);
 		goodsTypes = solrUtil.getGoodsType(goodsVo);
-		toJson = ToJson.getGson().toJson(goodsTypes); 
+		Jndata = ToJson.getGson().toJson(goodsTypes);
 	}
-	
 
 }

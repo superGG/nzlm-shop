@@ -9,8 +9,7 @@
     <constant name="struts.i18n.encoding" value="UTF-8"></constant>
      -->
      <!-- 设置上传文件的临时文件夹,默认使用javax.servlet.context.tempdir -->
-     <!-- 配置Spring的objectFactory -->
-     <constant name="struts.objectFactory" value="spring" />
+     
      <!-- 指定允许上传的文件最大字节数。默认值是2097152(2M) -->
      
     <constant name="struts.multipart.maxSize" value="10701096"/>

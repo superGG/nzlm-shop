@@ -1,4 +1,7 @@
-package com.earl.solrj.test;
+package com.earl.shopping.action.test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -10,7 +13,7 @@ public class SolrActionTest {
 	public void getQuery() throws Exception {
 		GoodsAction action = new GoodsAction();
 		action.QueryWithFacet();
-		String str = action.gettoJson();
+		String str = action.getJndata();
 		System.out.println(str);
 	}
 	
@@ -20,42 +23,77 @@ public class SolrActionTest {
 		GoodsAction action = new GoodsAction();
 		
 		action.QueryHotAction();
-		String str = action.gettoJson();
+		String str = action.getJndata();
 		System.out.println(str);
 	}
 	
 	@Test
-	public void QueryLabelAction() throws Exception {
+	public void QueryKeyWordAction() throws Exception {
 		GoodsAction action = new GoodsAction();
-		action.setLabel("手机");
-		action.QueryLabelAction();
-		String str = action.gettoJson();
+		action.setKeyWord("u盘");
+		action.QueryKeyWordAction();
+		String str = action.getJndata();
 		System.out.println(str);
 	}
 	@Test
 	public void QueryWithTypeAction() throws Exception {
 		GoodsAction action = new GoodsAction();
-		action.setType("手机");
+		action.setType2("手机");
 		action.QueryWithTypeAction();
-		String str = action.gettoJson();
+		String str = action.getJndata();
 		System.out.println(str);
 	}
 	@Test
 	public void QueryWithFaceType() throws Exception {
 		GoodsAction action = new GoodsAction();
-		action.setParentType("手机");
+		action.setParentType("电子产品");
 		action.QueryWithFaceType();
-		String str = action.gettoJson();
+		String str = action.getJndata();
 		System.out.println(str);
 	}
+	
 	@Test
 	public void GetAttrbutesAction() throws Exception {
 		GoodsAction action = new GoodsAction();
 		GoodsVo goodsVo = new GoodsVo();
-		goodsVo.setGoodsname("手机");
+		action.setType2("U盘");
 		action.setGoodsVo(goodsVo);
 		action.GetAttrbutesAction();
-		String str = action.gettoJson();
+		String str = action.getJndata();
 		System.out.println(str);
 	}
+	
+	@Test
+	public void QueryByPriceAction() throws Exception {
+		GoodsAction action = new GoodsAction();
+		GoodsVo goodsVo = new GoodsVo();
+		List<String> list = new ArrayList<String>();
+		list.add("颜色_金色");
+		list.add("容量_32G");
+		action.setList(list);
+		action.setMinPrice(50f);
+		action.setMaxPrice(150f);
+		action.setType2("U盘");
+		action.setGoodsVo(goodsVo);
+		action.QueryByPriceAction();
+		String str = action.getJndata();
+		System.out.println(str);
+	}
+
+	@Test
+	public void QueryByAttributesAction() throws Exception {
+		GoodsAction action = new GoodsAction();
+		GoodsVo goodsVo = new GoodsVo();
+		List<String> list = new ArrayList<String>();
+		list.add("颜色_金色");
+		list.add("容量_32G");
+		list.add("品牌_金士顿");
+		action.setList(list);
+		action.setType2("U盘");
+		action.setGoodsVo(goodsVo);
+		action.QueryByAttributesAction();
+		String str = action.getJndata();
+		System.out.println(str);
+	}
+	
 }
