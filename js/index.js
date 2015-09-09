@@ -1,8 +1,8 @@
 $(function(){
-	$('.first_class > ul > li').each(function(i){
+	$('.first_class > ul > li').each(function(j){
 		var $this = $(this);
-		$this.bind('mouseover',i,function(){
-			$('.section').eq(i).show().siblings('div').hide();
+		$this.bind('mouseover',j,function(){
+			$('.section').eq(j).show().siblings('div').hide();
 		})
 	});
 
