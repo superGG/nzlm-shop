@@ -172,21 +172,21 @@ public class BaseSolrUtilTest {
 			System.out.println(object.toString());
 		}
 	}
-
-	// 根据关键字查询商品
-	// TODO 要加上高亮
-	@Test
-	public void testQueryLabel() throws Exception {
-		String label = "手机";
-		GoodsVo goods = new GoodsVo();
-		goods.setGoodsname(label);
-		goods.setGoodslabel(label);
-
-		List<GoodsVo> beansList = solrUtil.queryBeans(goods);
-		for (Object object : beansList) {
-			System.out.println(object.toString());
-		}
-	}
+//
+//	// 根据关键字查询商品
+//	// 要加上高亮
+//	@Test
+//	public void testQueryLabel() throws Exception {
+//		String label = "手机";
+//		GoodsVo goods = new GoodsVo();
+//		goods.setGoodsname(label);
+//		goods.setGoodslabel(label);
+//
+//		List<GoodsVo> beansList = solrUtil.queryBeans(goods);
+//		for (Object object : beansList) {
+//			System.out.println(object.toString());
+//		}
+//	}
 
 	/**
 	 * 根据类型查询商品
@@ -210,8 +210,8 @@ public class BaseSolrUtilTest {
 	 */
 	@Test
 	public void testQueryWithFacet() throws Exception {
-		GoodsVo goods = new GoodsVo();
-		List<String> goodsTypes = solrUtil.getGoodsType(goods);
+//		GoodsVo goods = new GoodsVo();
+		List<String> goodsTypes = solrUtil.getGoodsType(new GoodsVo());
 		for (Object object : goodsTypes) {
 			System.out.println(object.toString());
 		}
