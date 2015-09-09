@@ -1,0 +1,7 @@
+1.views存放视图，admin存放管理后台视图，front存放前台视图
+2.图片存放在img目录下
+3.js目录结构
+  3.1.js/plugins存放第三方js插件库
+  3.2.js/lib存放第三方js公共库
+  3.3.js/admin存放后台自定义js
+  3.4.实体类存放在js/models目录下
