@@ -1,16 +1,4 @@
-$(function(){
-	var ool = $('#wrap ol li');
-	var nowX = 0;
-	var index;
-	var oul = $('#wrap ul');
-	ool.bind('click',function(){
-		index = $(this).index();
-		// alert(index);
-		if(index === 0){
-			index = -1;
-		}else if(index === 1){
-			index = 1;
-		}
+(function($){
 
 	$.fn.silder = function(options){
 
