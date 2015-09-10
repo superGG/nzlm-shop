@@ -68,10 +68,8 @@ public class GoodsAction extends BaseAction<GoodsVo> {
 	private String type3;
 	// 商品标签.
 	private String label;
-	// 统计父类类别的集合.
+	// 统计类别的集合.
 	private List<String> goodsTypes;
-	// 统计该类别下的子类.
-	private String parentType;
 	// 高亮查询结果集.
 	private List<Object> lightList;
 	// String数据封装
@@ -122,21 +120,6 @@ public class GoodsAction extends BaseAction<GoodsVo> {
 	 */
 	public final void setGoodsTypes(List<String> goodsTypes) {
 		this.goodsTypes = goodsTypes;
-	}
-
-	/**
-	 * @return the parentType
-	 */
-	public final String getParentType() {
-		return parentType;
-	}
-
-	/**
-	 * @param parentType
-	 *            the parentType to set
-	 */
-	public final void setParentType(String parentType) {
-		this.parentType = parentType;
 	}
 
 	/**
@@ -431,12 +414,16 @@ public class GoodsAction extends BaseAction<GoodsVo> {
 	 * 
 	 * @throws Exception
 	 */
-	public void QueryWithTypeAction() throws Exception {
-		if (type2 != null) {
-			goodsVo.setGoodstype2(type2);
-			GoodsVoList = solrUtil.queryBeans(goodsVo);
+	public void QueryByTypeAction() throws Exception {
+		if (type3 != null) {
+			goodsVo.setGoodstype3(type3);
+			GoodsVoList = solrUtil.queryBeans(goodsVo, type3);
 			Jndata = ToJson.getGson().toJson(GoodsVoList);
-		} else {
+		} else if (type2 != null) {
+			goodsVo.setGoodstype2(type2);
+			GoodsVoList = solrUtil.queryBeans(goodsVo, type2);
+			Jndata = ToJson.getGson().toJson(GoodsVoList);
+		} else  {
 			return;
 		}
 	}
@@ -467,24 +454,14 @@ public class GoodsAction extends BaseAction<GoodsVo> {
 	}
 
 	/**
-	 * 统计父类别.
+	 * 统计类别.
 	 * 
 	 * @throws Exception
 	 */
-	public void QueryWithFacet() throws Exception {
-		goodsVo = new GoodsVo();
-		goodsTypes = solrUtil.getGoodsType(goodsVo);
-		this.Jndata = ToJson.getGson().toJson(goodsTypes);
-	}
-
-	/**
-	 * 根据父类别统计子类别.
-	 * 
-	 * @throws Exception
-	 */
-	public void QueryWithFaceType() throws Exception {
-		if (parentType != null)
-			goodsVo.setGoodstype1(parentType);
+	public void GetTypeAction() throws Exception {
+		goodsVo.setGoodstype1(type1);
+		goodsVo.setGoodstype2(type2);
+		goodsVo.setGoodstype3(type3);
 		goodsTypes = solrUtil.getGoodsType(goodsVo);
 		Jndata = ToJson.getGson().toJson(goodsTypes);
 	}

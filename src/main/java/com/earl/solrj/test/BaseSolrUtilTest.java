@@ -84,25 +84,11 @@ public class BaseSolrUtilTest {
 		System.out.println("删除成功");
 	}
 
-//	// 测试用例   **都是在这里测试可以了才复制粘贴一个新的方法***
-//	@Test
-//	public void testQuery() throws Exception {
-//		 List<String> list = new ArrayList<String>();
-////		 list.add("颜色_金色");
-//		 list.add("容量_32G");
-//		GoodsVo goods = new GoodsVo();
-//		 goods.setGoodsattributes(list);
-////		goods.setGoodstype2("手机");
-//		List<Object> beansList = solrUtil.queryWithHeightLight(goods);
-//		for (Object object : beansList) {
-//			System.out.println(object.toString());
-//		}
-//	}
 	
 	//根据关键字查询.
 	@Test
 	public void testQueryByLabel() throws Exception {
-		String label = "魅蓝";
+		String label = "魅蓝手机";
 		List<Object> beansList = solrUtil.queryBean(label);
 		for (Object object : beansList) {
 			System.out.println(object.toString());
@@ -172,31 +158,16 @@ public class BaseSolrUtilTest {
 			System.out.println(object.toString());
 		}
 	}
-//
-//	// 根据关键字查询商品
-//	// 要加上高亮
-//	@Test
-//	public void testQueryLabel() throws Exception {
-//		String label = "手机";
-//		GoodsVo goods = new GoodsVo();
-//		goods.setGoodsname(label);
-//		goods.setGoodslabel(label);
-//
-//		List<GoodsVo> beansList = solrUtil.queryBeans(goods);
-//		for (Object object : beansList) {
-//			System.out.println(object.toString());
-//		}
-//	}
 
 	/**
 	 * 根据类型查询商品
 	 */ 
 	@Test
-	public void testQueryWithType() throws Exception {
-		// String type1 = "电子产品";
+	public void testQueryByType() throws Exception {
+//		 String type1 = "电子产品";
 		String type2 = "U盘";
 		GoodsVo goods = new GoodsVo();
-		// goods.setGoodstype1(type1);
+//		 goods.setGoodstype1(type1);
 		goods.setGoodstype2(type2);
 
 		List<GoodsVo> beansList = solrUtil.queryBeans(goods);
@@ -206,31 +177,21 @@ public class BaseSolrUtilTest {
 	}
 
 	/**
-	 * 统计父类别
+	 * 统计类别
 	 */
 	@Test
-	public void testQueryWithFacet() throws Exception {
-//		GoodsVo goods = new GoodsVo();
-		List<String> goodsTypes = solrUtil.getGoodsType(new GoodsVo());
-		for (Object object : goodsTypes) {
-			System.out.println(object.toString());
-		}
-	}
-
-	/**
-	 * 根据父类别统计子类别
-	 */
-	@Test
-	public void testQueryWithFacetType() throws Exception {
-		String parentType = "电子产品";
+	public void testGetType() throws Exception {
 		GoodsVo goods = new GoodsVo();
+		String parentType = "电子产品";
 		goods.setGoodstype1(parentType);
-
 		List<String> goodsTypes = solrUtil.getGoodsType(goods);
 		for (Object object : goodsTypes) {
 			System.out.println(object.toString());
 		}
-
 	}
+
+//	
+
+	
 	
 }
