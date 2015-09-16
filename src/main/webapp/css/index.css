@@ -4,20 +4,26 @@
 
 /*"Microsoft YaHei" ,*/
 
+html{
+	position: relative;
+	min-height: 100%;
+}
+
 body{
-	background: #232323 !important;
+	background: #232323 ;
 }
 
 .top_nav{
+	width: 71.59818%;
+	max-width: 960px;
+	margin: auto;
 	height: 29px;
 	background: #000;
 	color: #CBCBCB;
 	/*text-align: center;*/
 }
 
-.tn_left{
-	margin-left: 14.1288%;
-}
+
 
 .top_nav li{
 	display: inline-block;
@@ -29,6 +35,7 @@ body{
 
 .top_nav li:first-child{
 	background: #E23E37;
+	color: #fff;
 }
 
 .top_nav li:last-child{
@@ -37,11 +44,13 @@ body{
 
 .top_nav li:hover{
 	background: #E23E37;
+	color: #fff;
 }
 
 .logo{
 	background: #232323;
 	width: 71.59818%;
+	max-width: 960px;
 	padding: 20px 0 24px 0;
 	margin: auto;
 	text-align: center;
@@ -59,10 +68,9 @@ body{
 	color: #DE2D2D;
 }
 
-/*.main{
-	width: 71.59818%;
-	margin: auto;
-}*/
+.main{
+	padding-bottom: 72px;
+}
 
 .main_nav{
 	border-top: 1px solid #343333;
@@ -70,6 +78,7 @@ body{
 
 .first_class{
 	width: 71.59818%;
+	max-width: 960px;
 	line-height: 50px;
 	margin: auto;
 }
@@ -244,10 +253,14 @@ body{
 
 
 footer{
-	margin-top: 30px;
+	/*margin-top: 30px;*/
 	text-align: center;
-	padding: 20px;
+	/*padding: 20px;*/
+	padding: 20px 0px;
 	color: #FFF;
+	position: absolute;
+	width: 100%;
+	bottom: 0px;
 }
 
 
