@@ -26,7 +26,6 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 	}
 
 	@SuppressWarnings("unchecked")
-	@Override
 	public void save(T model) {
 		Assert.assertNotNull("baseDao is null", baseDao);
 
@@ -34,30 +33,25 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 	}
 
 	@SuppressWarnings("unchecked")
-	@Override
 	public void update(T t) {
 		baseDao.update(t);
 	}
 
-	@Override
 	public void deleteById(Integer id) {
 		baseDao.deleteById(id);
 	}
 
 	@SuppressWarnings("unchecked")
-	@Override
 	public T get(Integer id) {
 		return (T) baseDao.get(id);
 	}
 
 	@SuppressWarnings("unchecked")
-	@Override
 	public List<T> findAll() {
 		return baseDao.findAll();
 	}
 
 	@SuppressWarnings("unchecked")
-	@Override
 	public List<T> findByGivenCreteria(T object) {
 
 		return baseDao.findByGivenCriteria(object);
