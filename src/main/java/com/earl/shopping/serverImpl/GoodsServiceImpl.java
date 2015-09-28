@@ -21,8 +21,8 @@ public class GoodsServiceImpl extends BaseServiceImpl<GoodsPo> implements
 	
 	@Override
 	public void save(GoodsPo goods){
-		
 		super.save(goods);
+		
 	}
 	
 	@Override
