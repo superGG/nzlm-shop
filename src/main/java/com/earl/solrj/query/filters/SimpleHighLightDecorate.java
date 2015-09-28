@@ -78,7 +78,6 @@ public class SimpleHighLightDecorate implements QueryDecorate {
 		this.post = post;
 	}
 
-	@Override
 	public SolrQuery decorate(SolrQuery query) {
 		query.setHighlight(true);
 		query.setHighlightSimplePost(this.post);
