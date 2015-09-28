@@ -219,20 +219,20 @@ header,nav,footer{
 	width: 12%;
 }
 
-.main .container .classification_attr .price{
+.main .container  .price{
 	display: inline-block;
 	line-height: 1.4;
 	margin-bottom: 15px;
 }
 
-.main .container .classification_attr .price input{
+.main .container .price input{
 	border: 1px solid #ccc;
     height: 17px;
     line-height: 17px;
     width: 12%;
 }
 
-.main .container .classification_attr .price .button{
+.main .container .price .button{
     background: #f7f7f7 -moz-linear-gradient(center top , #f7f7f7, #f2f2f2) repeat-x scroll 0 0;
     border: 1px solid #ddd;
     border-radius: 2px;
