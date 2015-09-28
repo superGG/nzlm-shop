@@ -1,5 +1,7 @@
 package com.earl.solrj;
 
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,6 +12,7 @@ import java.util.Map;
 import org.apache.commons.beanutils.BeanMap;
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
+import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.response.FacetField;
 import org.apache.solr.client.solrj.response.FacetField.Count;
 import org.apache.solr.client.solrj.response.QueryResponse;
@@ -79,9 +82,10 @@ public class SolrService {
 	 * @param queryStatement
 	 *            查询语句.
 	 * @return beans 对象集合.
-	 * @throws Exception
+	 * @throws IOException 
+	 * @throws SolrServerException 
 	 */
-	private List<GoodsVo> queryBeans(SolrQuery queryStatement) throws Exception {
+	private List<GoodsVo> queryBeans(SolrQuery queryStatement) throws SolrServerException, IOException {
 		SolrClient queryClient = this.masterFactory.getQuerySolrClient();
 
 		QueryResponse query = queryClient.query(queryStatement);
@@ -112,9 +116,10 @@ public class SolrService {
 	 * @param goods
 	 *            对象.
 	 * @return beans 结果集.
-	 * @throws Exception
+	 * @throws IOException 
+	 * @throws SolrServerException 
 	 */
-	public List<GoodsVo> queryBeans(GoodsVo goods) throws Exception {
+	public List<GoodsVo> queryBeans(GoodsVo goods) throws SolrServerException, IOException {
 		// 得到非空属性
 		Map<String, Object> notNullProperties = getNotNullProperties(goods);
 		// 得到查询语句 // OR连接查询语句
@@ -125,18 +130,21 @@ public class SolrService {
 
 		return beans;
 	}
-	
+
 	/**
 	 * 根据类别查询商品对象.
+	 * 
 	 * @param goods
-	 * 			获取商品类别.
+	 *            获取商品类别.
 	 * @param type
-	 * 			需要查询类别.
-	 * @return beans
-	 * 			查询结果集.
+	 *            需要查询类别.
+	 * @return beans 查询结果集.
+	 * @throws IOException 
+	 * @throws SolrServerException 
 	 * @throws Exception
 	 */
-	public List<GoodsVo> queryBeans(GoodsVo goods, String type) throws Exception {
+	public List<GoodsVo> queryBeans(GoodsVo goods, String type) throws SolrServerException, IOException
+			{
 		SolrQuery query = new SolrQuery();
 		String solr = "goodstype2:" + type;
 		if (goods.getGoodstype3() != null) {
@@ -148,7 +156,6 @@ public class SolrService {
 		List<GoodsVo> beans = queryBeans(query);
 		return beans;
 	}
-	
 
 	/**
 	 * 通过类别和属性查询商品.
@@ -209,11 +216,13 @@ public class SolrService {
 		solrQuery.append(" AND ").append(type);
 
 		// 添加搜索属性语句
-		Iterator<String> iterator = goods.getGoodsattributes().iterator();
-		while (iterator.hasNext()) {
-			String str = iterator.next();
-			solrQuery.append(" AND ").append("goodsattributes").append(" : ")
-					.append(str);
+		if (goods.getGoodsattributes() != null) {
+			Iterator<String> iterator = goods.getGoodsattributes().iterator();
+			while (iterator.hasNext()) {
+				String str = iterator.next();
+				solrQuery.append(" AND ").append("goodsattributes")
+						.append(" : ").append(str);
+			}
 		}
 		query.setQuery(solrQuery.toString());
 		List<GoodsVo> beans = queryBeans(query);
@@ -222,16 +231,20 @@ public class SolrService {
 
 	/**
 	 * 根据关键字查询商品.
-	 * @param label
-	 * 			关键字.
-	 * @return beans
-	 * 			结果集.
-	 * @throws Exception
+	 * @author 黄祥谦
+	 * @param keyword
+	 *            关键字.
+	 * @return beans 结果集.
+	 * @throws IOException 
+	 * @throws SolrServerException 
+	 * @throws IllegalAccessException 
+	 * @throws InstantiationException 
+	 * @throws InvocationTargetException 
+	 * @throws IllegalArgumentException 
 	 */
-	public List<Object> queryBean(String label)
-			throws Exception {
+	public List<Object> queryBean(String keyword) throws SolrServerException, IOException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		// 得到查询语句 //OR 连接查询语句
-		String queryString = getSpecifyQueryString(label);
+		String queryString = getSpecifyQueryString(keyword);
 
 		SolrClient queryClient = this.masterFactory.getQuerySolrClient();
 		SolrQuery query = new SolrQuery(queryString);
@@ -253,7 +266,7 @@ public class SolrService {
 		// 第一个Map的键是文档的ID，第二个Map的键是高亮显示的字段名
 		Map<String, Map<String, List<String>>> map = response.getHighlighting();
 
-		//将高亮后的数据替换原来的数据
+		// 将高亮后的数据替换原来的数据
 		for (int i = 0; i < documents.size(); i++) {
 			document = documents.get(i);
 			List<String> list = map.get(document.getFieldValue("id")).get(
@@ -263,8 +276,7 @@ public class SolrService {
 			}
 			doucmentList.add(document);
 		}
-		List<Object> beans = DocumentToBean(doucmentList,
-				GoodsVo.class);
+		List<Object> beans = documentToBean(doucmentList, GoodsVo.class);
 		return beans;
 	}
 
@@ -276,11 +288,13 @@ public class SolrService {
 	 * @param clazz
 	 *            需要转换成的类型.
 	 * @return List<Object> 结果集.
-	 * @throws Exception
+	 * @throws IllegalAccessException 
+	 * @throws InstantiationException 
+	 * @throws InvocationTargetException 
+	 * @throws IllegalArgumentException 
 	 */
-	@SuppressWarnings("rawtypes")
-	public List<Object> DocumentToBean(SolrDocumentList doucmentList,
-			Class clazz) throws Exception {
+	public List<Object> documentToBean(SolrDocumentList doucmentList,
+			Class<GoodsVo> clazz) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException{
 		Object object;
 		List<Object> list = new ArrayList<Object>();
 		for (SolrDocument solrDocument : doucmentList) {
@@ -319,7 +333,7 @@ public class SolrService {
 		FacetFilter facetFilter = new FacetFilter();
 		SolrQuery solrQuery = new SolrQuery();
 
-		if (goods.getGoodstype1() == null && goods.getGoodstype2() == null 
+		if (goods.getGoodstype1() == null && goods.getGoodstype2() == null
 				&& goods.getGoodstype3() == null) {
 			solrQuery.setQuery("* : *");
 			facetFilter.addFacetField("goodstype1");
@@ -393,7 +407,6 @@ public class SolrService {
 					valueList.add(attributeValue);
 					map.put(attributeName, valueList);
 				}
-
 			}
 		}
 		return map;
@@ -427,10 +440,10 @@ public class SolrService {
 
 	/**
 	 * 关键字查询语句的拼接.
+	 * 
 	 * @param label
-	 * 			关键字.
-	 * @return label
-	 * 			查询语句.
+	 *            关键字.
+	 * @return label 查询语句.
 	 */
 	private String getSpecifyQueryString(String label) {
 		StringBuilder querybuilder = new StringBuilder();
@@ -489,5 +502,68 @@ public class SolrService {
 		}
 		String query = querybuilder.toString();
 		return query;
+	}
+
+	/**
+	 * 获取全部类别.
+	 * 
+	 * @return myMap 全部类别.
+	 * @throws IOException If there is a low-level I/O error.
+	 * @throws SolrServerException if there is an error on the server
+	 */
+	public List getCategory() throws SolrServerException, IOException
+			{
+		Map<String, Map<String, List<String>>> myMap = new HashMap<String, Map<String, List<String>>>();
+		SolrClient queryClient = this.masterFactory.getQuerySolrClient();
+		SolrQuery query = new SolrQuery("* : *");
+
+		QueryResponse response = queryClient.query(query);
+
+		List<GoodsVo> beans = response.getBeans(GoodsVo.class);
+
+		for (GoodsVo goodsVo : beans) {
+			if (myMap.keySet().contains(goodsVo.getGoodstype1())) {
+
+			} else {
+				myMap.put(goodsVo.getGoodstype1(),
+						new HashMap<String, List<String>>());
+			}
+			if (myMap.get(goodsVo.getGoodstype1()).keySet()
+					.contains(goodsVo.getGoodstype2())) {
+
+			} else {
+				myMap.get(goodsVo.getGoodstype1()).put(goodsVo.getGoodstype2(),
+						new ArrayList<String>());
+			}
+			if (goodsVo.getGoodstype3() != null) {
+
+				if (myMap.get(goodsVo.getGoodstype1())
+						.get(goodsVo.getGoodstype2())
+						.contains(goodsVo.getGoodstype3())) {
+
+				} else {
+					myMap.get(goodsVo.getGoodstype1())
+							.get(goodsVo.getGoodstype2())
+							.add(goodsVo.getGoodstype3());
+				}
+			}
+		}
+		List datalist = new ArrayList();
+		for (String tmpkey : myMap.keySet()) {
+			Map tmpmap = new HashMap();
+			tmpmap.put("name",tmpkey);
+			
+			List type2List = new ArrayList();
+			for(String type2key :myMap.get(tmpkey).keySet()){
+				Map type2 = new HashMap();
+				type2.put("name",type2key);
+				type2.put("type3", myMap.get(tmpkey).get(type2key));
+				type2List.add(type2);
+			}
+			
+			tmpmap.put("type2", type2List);
+			datalist.add(tmpmap);
+		}
+		return datalist;
 	}
 }

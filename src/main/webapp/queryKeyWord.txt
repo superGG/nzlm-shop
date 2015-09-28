@@ -1,0 +1,53 @@
+[
+    {
+        "id": "1",
+        "goodsname": "<font color=\"red\">U</font><font color=\"red\">盘</font>a",
+        "goodsattributes": [
+            "容量_16G",
+            "颜色_金色",
+            "接口_3.0",
+            "生成商_金士顿",
+            "品牌_金士顿"
+        ],
+        "goodsprice": 60,
+        "goodspic": "http:url:8080",
+        "ishot": true,
+        "goodslabel": "金士顿_U盘_16G",
+        "goodstype1": "电子产品",
+        "goodstype2": "U盘"
+    },
+    {
+        "id": "2",
+        "goodsname": "<font color=\"red\">U</font><font color=\"red\">盘</font>",
+        "goodsattributes": [
+            "容量_32G",
+            "颜色_金色",
+            "接口_3.0",
+            "生成商_金士顿",
+            "品牌_金士顿"
+        ],
+        "goodsprice": 60,
+        "goodspic": "http:url:8080",
+        "ishot": true,
+        "goodslabel": "金士顿_U盘_16G",
+        "goodstype1": "电子产品",
+        "goodstype2": "U盘"
+    },
+    {
+        "id": "3",
+        "goodsname": "<font color=\"red\">U</font><font color=\"red\">盘</font>",
+        "goodsattributes": [
+            "容量_64G",
+            "颜色_银色",
+            "接口_3.0",
+            "生成商_金士顿",
+            "品牌_金士顿"
+        ],
+        "goodsprice": 60,
+        "goodspic": "http:url:8080",
+        "ishot": true,
+        "goodslabel": "金士顿_U盘_16G",
+        "goodstype1": "电子产品",
+        "goodstype2": "U盘"
+    }
+]

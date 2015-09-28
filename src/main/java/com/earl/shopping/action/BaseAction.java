@@ -17,6 +17,11 @@ import com.opensymphony.xwork2.ModelDriven;
 public class BaseAction<T> extends ActionSupport implements RequestAware,
 		SessionAware, ApplicationAware, ModelDriven<T> {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8149565301937545170L;
+
 	protected T model;
 
 	protected Map<String, Object> request;
@@ -40,23 +45,19 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,
 		}
 	}
 
-	@Override
 	public void setRequest(Map<String, Object> request) {
 		this.request = request;
 	}
 
-	@Override
 	public T getModel() {
 		return model;
 	}
 
-	@Override
 	public void setApplication(Map<String, Object> application) {
 		this.application = application;
 
 	}
 
-	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
