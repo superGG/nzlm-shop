@@ -1,3 +1,4 @@
+
 $(function () {
 
     console.log(window.location.href.substr(window.location.href.lastIndexOf("?")+1));

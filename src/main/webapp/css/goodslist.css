@@ -23,9 +23,6 @@ header,nav,footer{
 
 .main .container .class_selection_container .class_selection ul{
 	position: relative;
-}
-
-.main .container .class_selection_container .class_selection ul{
 	font-size: 0;
 }
 
@@ -83,13 +80,13 @@ header,nav,footer{
 	font-weight: bolder;
 }
 
+
 .press {
 	display: block;
 	color: rgb(222, 45, 45);
 	text-decoration: none;
 
 }
-
 
 .main .container .class_selection_container .class_selection ul li.focus a{
 	background: #E23E37; 
@@ -239,9 +236,6 @@ header,nav,footer{
 
 .main .container .goods_list .goods_show ul{
 	margin-top: 20px;
-}
-
-.main .container .goods_list .goods_show ul{
 	font-size: 0;
 }
 
