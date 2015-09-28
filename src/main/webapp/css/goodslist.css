@@ -23,12 +23,16 @@ header,nav,footer{
 
 .main .container .class_selection_container .class_selection ul{
 	position: relative;
+	font-size: 0;
 }
 
 .main .container .class_selection_container .class_selection ul li{
 	background: rgb(153,153,153);
 }
 
+.main .container .class_selection_container .class_selection ol{
+	font-size: 0;
+}
 
 .main .container .class_selection_container .class_selection li{
 	display: inline-block;
@@ -76,6 +80,13 @@ header,nav,footer{
 	font-weight: bolder;
 }
 
+
+.press {
+	display: block;
+	color: rgb(222, 45, 45);
+	text-decoration: none;
+
+}
 
 .main .container .class_selection_container .class_selection ul li.focus a{
 	background: #E23E37; 
@@ -196,12 +207,14 @@ header,nav,footer{
 
 .main .container .goods_list .sort ul{
 	padding: 0 15px;
+	font-size: 0;
 }
 
 .main .container .goods_list .sort li{
 	display: inline-block;
 	line-height: 20px;
 	padding: 0 5px;
+	font-size: 12px;
 	background: #FFF;
 	border: 1px solid #373737;
 	margin-left: -1px;
@@ -223,6 +236,7 @@ header,nav,footer{
 
 .main .container .goods_list .goods_show ul{
 	margin-top: 20px;
+	font-size: 0;
 }
 
 .main .container .goods_list .goods_show ul li{

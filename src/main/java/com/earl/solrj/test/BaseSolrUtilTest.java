@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.solr.client.solrj.SolrServerException;
+import org.junit.Assert;
 import org.junit.Test;
 
 import com.earl.solrj.SolrService;
@@ -84,8 +85,7 @@ public class BaseSolrUtilTest {
 		System.out.println("删除成功");
 	}
 
-	
-	//根据关键字查询.
+	// 根据关键字查询.
 	@Test
 	public void testQueryByLabel() throws Exception {
 		String label = "魅蓝手机";
@@ -117,7 +117,7 @@ public class BaseSolrUtilTest {
 		list.add("颜色_金色");
 		list.add("容量_32G");
 		GoodsVo goods = new GoodsVo();
-		goods.setGoodsattributes(list);
+		// goods.setGoodsattributes(list);
 		goods.setGoodstype2("U盘");
 		float minPrice = 50f;
 		float maxPrice = 150f;
@@ -161,13 +161,13 @@ public class BaseSolrUtilTest {
 
 	/**
 	 * 根据类型查询商品
-	 */ 
+	 */
 	@Test
 	public void testQueryByType() throws Exception {
-//		 String type1 = "电子产品";
+		// String type1 = "电子产品";
 		String type2 = "U盘";
 		GoodsVo goods = new GoodsVo();
-//		 goods.setGoodstype1(type1);
+		// goods.setGoodstype1(type1);
 		goods.setGoodstype2(type2);
 
 		List<GoodsVo> beansList = solrUtil.queryBeans(goods);
@@ -190,8 +190,14 @@ public class BaseSolrUtilTest {
 		}
 	}
 
-//	
+	//
 
-	
+	@Test
+	public void testGetCategory() throws Exception {
+		List category = solrUtil.getCategory();
+//		Assert.assertEquals(expected, actual);
+		System.out.println(category);
+		Assert.assertNotNull(category);
+	}
 	
 }

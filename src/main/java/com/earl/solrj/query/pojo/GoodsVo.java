@@ -47,8 +47,7 @@ public class GoodsVo {
 	// 3级类别
 	@Field
 	private String goodstype3;
-	
-	
+
 	public GoodsVo() {
 		super();
 	}
@@ -133,15 +132,14 @@ public class GoodsVo {
 		this.goodstype3 = goodstype3;
 	}
 
-	@Override
-	public String toString() {
-		return "[id=" + id + ", goodsname=" + goodsname
-				+ ", goodsattributes=" + goodsattributes + ", goodsprice="
-				+ goodsprice + ", goodspic=" + goodspic + ", ishot=" + ishot
-				+ ", goodslabel=" + goodslabel + ", goodstype1=" + goodstype1
-				+ ", goodstype2=" + goodstype2 + ", goodstype3=" + goodstype3
-				+ "]";
-	}
-	
-	
+	 @Override
+	 public String toString() {
+	 return "[id=" + id + ", goodsname=" + goodsname
+	 + ", goodsattributes=" + goodsattributes + ", goodsprice="
+	 + goodsprice + ", goodspic=" + goodspic + ", ishot=" + ishot
+	 + ", goodslabel=" + goodslabel + ", goodstype1=" + goodstype1
+	 + ", goodstype2=" + goodstype2 + ", goodstype3=" + goodstype3
+	 + "]";
+	 }
+
 }

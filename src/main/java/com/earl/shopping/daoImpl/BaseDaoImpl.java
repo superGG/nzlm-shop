@@ -51,7 +51,6 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	}
 
 	// 插入对象
-	@Override
 	/**
 	 * @author Administrator
 	 * 
@@ -67,7 +66,6 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	}
 
 	// 更新对象
-	@Override
 	public boolean update(T t) {
 		logger.debug("update " + clazz.getName() + " instance");
 		try {
@@ -82,14 +80,12 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	}
 
 	// 根据ID删除对象
-	@Override
 	public void deleteById(int id) {
 		logger.debug("delete " + clazz.getName() + " instance");
 		delete(get(id));
 	}
 
 	@SuppressWarnings("unchecked")
-	@Override
 	public T get(int id) {
 		logger.debug("get " + clazz.getName() + " instance");
 		Transaction tran = getCurrentSession().beginTransaction();
@@ -100,7 +96,6 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 
 	// 查找该表中的所有记录，
 	@SuppressWarnings("unchecked")
-	@Override
 	public List<T> findAll() {
 		Transaction tran = getCurrentSession().beginTransaction();
 		String hql = "from " + clazz.getSimpleName();
@@ -110,7 +105,6 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	}
 
 	// 删除所有对象
-	@Override
 	public void deleteAll() {
 		logger.debug("delete " + clazz.getName() + " instance");
 		Transaction tran = getCurrentSession().beginTransaction();
@@ -120,7 +114,6 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	}
 
 	// 通过对象来进行删除
-	@Override
 	public void delete(T persistentInstance) {
 		logger.debug("delete " + clazz.getName() + " instance");
 		Transaction tran = getCurrentSession().beginTransaction();
@@ -129,7 +122,6 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	}
 
 	// 通过给定条件进行查询
-	@Override
 	public List<T> findByGivenCriteria(T object) {
 		// 业务逻辑开始
 		HibernateHelper.getSessionFactory().getCurrentSession()
