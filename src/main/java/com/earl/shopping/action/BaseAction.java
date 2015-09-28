@@ -61,5 +61,4 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
-
 }
