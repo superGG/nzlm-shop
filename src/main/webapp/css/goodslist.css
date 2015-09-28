@@ -338,7 +338,7 @@ header,nav,footer{
 	margin: auto;
 }
 
-.main .container .goods_list .goods_show ul li span:before{
+.main .container .goods_list .goods_show ul li span.price:before{
 	content: 'P';
 	background: #DE2D2D;
 	color: #F2F2F2;
@@ -361,9 +361,11 @@ header,nav,footer{
 	-webkit-animation: imgshow 1s ease-in-out 1 forwards;	
 }
 
-.main .container .goods_list .goods_show ul li .row {
+.main .container .goods_list .goods_show ul li a.name {
+	display: block;
 	height: 50px;
 	overflow: hidden;
+	word-break: break-all;
 }
 
 
