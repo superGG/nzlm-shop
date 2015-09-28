@@ -222,7 +222,6 @@ header,nav,footer{
 .main .container  .price{
 	display: inline-block;
 	line-height: 1.4;
-	margin-bottom: 15px;
 }
 
 .main .container .price input{
@@ -245,6 +244,7 @@ header,nav,footer{
     text-align: center;
     text-decoration: none;
     margin-left: 15px;
+    background: #f7f7f7;
 }
 
 .main .container .classification_attr ul{
@@ -275,6 +275,7 @@ header,nav,footer{
 .main .container .goods_list .sort ul{
 	padding: 0 15px;
 	font-size: 0;
+	display: inline-block;
 }
 
 .main .container .goods_list .sort li{
