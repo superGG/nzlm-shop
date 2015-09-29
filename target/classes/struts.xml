@@ -30,12 +30,6 @@
 				<param name="inputName">jsonInputStream</param>
 			</result>
 		</action>
-		<action name="solr_*" class="com.earl.shopping.action.SolrAction"
-			method="{1}">
-			<result type="stream" name="done">
-				<param name="inputName">jsonInputStream</param>
-			</result>
-		</action>
 		<!-- 
 		<action name="*Action" class="com.earl.shopping.action.GoodsAction"
 			method="{1}">
