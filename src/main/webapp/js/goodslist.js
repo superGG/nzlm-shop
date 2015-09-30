@@ -24,6 +24,47 @@ $(function () {
 
     postModel.push({ name : attributename, value : attributevalue});
 
+    
+    $(".button.cw-icon").click(function(event){
+    	console.log($("#key").val());
+    	$(".classification").hide();
+    	 $.post('http://localhost:8080/shoppingsolr2/solr_queryKeyWord.action',{'keyWord':$("#key").val()},
+         		function(data){
+             console.log(eval(data));
+             keyWordGoods = eval(data);
+             $(".main .container .goods_list .goods_show ul").empty();
+             $.each(keyWordGoods, function (i, data) {
+                 var goods = $("<li></li>").append(
+                     $("<div class='good_img'></div>").append(
+                         $("<img />").attr("src", "img/Q5423EFZ41_CGR0_N01.JPG"))).append(
+                     $("<a class='name'></a>").attr("href", data.goodspic).html(data.goodsname)).append(
+                     $("<span class='price'></span>").text(data.goodsprice)).append(
+                     $("<em></em>").append($("<img />").attr("src", "img/icon_cart.png")).html("1000"));
+                 $(".goods_show > ul").append(goods);
+             });
+         });
+    	
+    });
+    
+    $(".price > a").on("click",function(){
+    	 $.post('http://localhost:8080/shoppingsolr2/solr_queryByPrice.action',{'maxPrice':$("#top-price").val(),'minPrice' : $("#down-price").val()},
+          		function(data){
+              console.log(eval(data));
+              keyWordGoods = eval(data);
+              $(".main .container .goods_list .goods_show ul").empty();
+              $.each(keyWordGoods, function (i, data) {
+                  var goods = $("<li></li>").append(
+                      $("<div class='good_img'></div>").append(
+                          $("<img />").attr("src", "img/Q5423EFZ41_CGR0_N01.JPG"))).append(
+                      $("<a class='name'></a>").attr("href", data.goodspic).html(data.goodsname)).append(
+                      $("<span class='price'></span>").text(data.goodsprice)).append(
+                      $("<em></em>").append($("<img />").attr("src", "img/icon_cart.png")).html("1000"));
+                  $(".goods_show > ul").append(goods);
+              });
+          });
+    });
+    
+    
     $.each(attributes, function (keyname, data) {
         var myul = $("<ul></ul>");
 //        console.log(postModel);
@@ -64,7 +105,7 @@ $(function () {
                                 $("<img />").attr("src", "img/Q5423EFZ41_CGR0_N01.JPG"))).append(
                             $("<a class='name'></a>").attr("href", data.goodspic).html(data.goodsname)).append(
                             $("<span class='price'></span>").text(data.goodsprice)).append(
-                            $("<em></em>").append($("<img />").attr("src", "img/icon_cart.png/")).html("1000"));
+                            $("<em></em>").append($("<img />").attr("src", "img/icon_cart.png")).html("1000"));
                         $(".goods_show > ul").append(goods);
                     });
                 });
@@ -84,7 +125,7 @@ $(function () {
                 $("<img />").attr("src", "img/Q5423EFZ41_CGR0_N01.JPG"))).append(
             $("<a class='name'></a>").attr("href", data.goodspic).html(data.goodsname)).append(
             $("<span class='price'></span>").text(data.goodsprice)).append(
-            $("<em></em>").append($("<img />").attr("src", "img/icon_cart.png/")).html("1000"));
+            $("<em></em>").append($("<img />").attr("src", "img/icon_cart.png")).html("1000"));
         $(".goods_show > ul").append(goods);
     });
 
@@ -98,5 +139,6 @@ $(function () {
             var $this = $(this);
             $this.addClass('imgdown').siblings().removeClass('imgdown');
         }
-    })
+    });
+    
 });
