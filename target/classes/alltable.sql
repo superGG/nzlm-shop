@@ -19,6 +19,7 @@ create table goods(
 	`ishot` boolean,
 	`manufacturer` varchar(20),
 	`goodslabel` varchar(50),
+	`category` int,
 	primary key (id)
 );
 

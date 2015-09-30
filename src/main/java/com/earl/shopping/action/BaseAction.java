@@ -1,5 +1,6 @@
 package com.earl.shopping.action;
 
+import java.io.InputStream;
 import java.lang.reflect.ParameterizedType;
 import java.util.Map;
 
@@ -9,6 +10,7 @@ import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.earl.shopping.server.CategoryService;
 import com.earl.shopping.server.GoodsService;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -28,8 +30,15 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,
 	protected Map<String, Object> session;
 	protected Map<String, Object> application;
 
-	@Resource
+	protected InputStream jsonInputStream;
+	
+	public InputStream getJsonInputStream() {
+		return jsonInputStream;
+	}
+	//TODO 需要手动注入Server
 	protected GoodsService goodsServer;
+	
+	protected CategoryService categoryServer;
 	
 
 	@SuppressWarnings("unchecked")

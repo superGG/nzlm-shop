@@ -25,7 +25,7 @@ public class GoodsAction extends BaseAction<GoodsPo> {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	protected InputStream jsonInputStream;
+	
 
 	private SolrService solrServer = new SolrService();
 
@@ -34,9 +34,7 @@ public class GoodsAction extends BaseAction<GoodsPo> {
 	 */
 	private String keyWord;
 
-	public InputStream getJsonInputStream() {
-		return jsonInputStream;
-	}
+	
 
 	public String getKeyWord() {
 		return keyWord;
@@ -52,7 +50,12 @@ public class GoodsAction extends BaseAction<GoodsPo> {
 		goodsServer.save(model);
 		GoodsVo goodsVo = new GoodsVo();
 		BeanUtils.copyProperties(goodsVo, model);
-		solrServer.addBeanIndex(goodsVo);
+		//属性之间的分割符；
+		//TODO List循环裝入String[]
+		model.getGoodsattributes().split(";");
+//		goodsVo.setGoodsattributes();
+		
+		solrServer.addBeanIndex(goodsServer.getCategory(model,goodsVo));
 	}
 
 	/**

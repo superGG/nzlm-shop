@@ -4,17 +4,17 @@ $(function () {
     console.log(window.location.href.substr(window.location.href.lastIndexOf("?")+1));
     tmptype = window.location.href.substr(window.location.href.lastIndexOf("?")+1);
 
-    var attributename = tmptype.substr(tmptype.lastIndexOf("=")+1);
-    var attributevalue = tmptype.substr(0,tmptype.lastIndexOf("="));
-    console.log(attributename);
-    console.log(attributevalue);
+    var attributename = tmptype.substr(0,tmptype.lastIndexOf("="));
+    var attributevalue =decodeURIComponent(tmptype.substr(tmptype.lastIndexOf("=")+1));
+    console.log("name"+attributename);
+    console.log("value"+attributevalue);
 
     //下面是初始化的商品数据
-    var goodslist_htmlobj = $.ajax({url: "queryKeyWord.txt", async: false});
-//    var goodslist_htmlobj = $.ajax({url: "localhost:8080/shoppingsolr2/solr_queryByType.action?"+tmptype, async: false});
+//    var goodslist_htmlobj = $.ajax({url: "queryKeyWord.txt", async: false});
+    var goodslist_htmlobj = $.ajax({url: "http://localhost:8080/shoppingsolr2/solr_queryByType.action?"+tmptype, async: false});
 
-    var attributes_htmlobj = $.ajax({url: "getAttribute.txt", async: false});
-//    var attributes_htmlobj = $.ajax({url: "http://localhost:8080/shoppingsolr2/solr_getAttrbutes.action?"+tmptype, async: false});
+//    var attributes_htmlobj = $.ajax({url: "getAttribute.txt", async: false});
+    var attributes_htmlobj = $.ajax({url: "http://localhost:8080/shoppingsolr2/solr_getAttrbutes.action?"+tmptype, async: false});
 
     var attributes = eval('(' + attributes_htmlobj.responseText + ")");
 
@@ -26,6 +26,10 @@ $(function () {
 
     $.each(attributes, function (keyname, data) {
         var myul = $("<ul></ul>");
+//        console.log(postModel);
+//        	while(postModel.length >=1){
+//        		postModel.pop();
+//        	}
         $.each(data, function (i, data2) {
             myul.append($("<li></li>").html(data2).on('click', function () {
                 if ($(this).hasClass("press")) {
@@ -34,15 +38,23 @@ $(function () {
                     $(this).siblings().removeAttr("class");
                     $(this).attr("class", "press");
                 }
-
+                while(postModel.length > 1){
+                	postModel.pop();
+                }
                 $(".classification_attr .press").parent().siblings().each(function (i, data2) {
                     var mydata = $(data2).html() + '_' + $(data2).siblings().find(".press").html();
-                    postModel.push({ name : 'goodsAtributes', value : mydata});
+                    postModel.push({ name : 'goodsattributes', value : mydata});
                 });
                 //console.log(postModel);
-//                
-//                $.post('localhost:8080/shoppingsolr2/goods_queryByAttributes.action',postModel,function(data){
-                $.post('queryKeyWord.txt',postModel,function(data){
+//              
+                $.ajaxSetup({
+                	  contentType: "application/x-www-form-urlencoded; charset=utf-8"
+                });
+                
+                console.log(postModel);
+                $.post('http://localhost:8080/shoppingsolr2/solr_queryByAttributes.action',postModel,
+                		function(data){
+//                $.post('queryKeyWord.txt',postModel,function(data){
                     console.log(eval(data));
                     keyWordGoods = eval(data);
                     $(".main .container .goods_list .goods_show ul").empty();
