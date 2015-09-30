@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.beanutils.BeanMap;
+import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -29,9 +30,9 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 
 	@SuppressWarnings("rawtypes")
 	Class clazz; // 用来存储BaseDaoImpl泛型T的实际类型
-
-	static Logger logger = null; // 这个日志工具暂时没有必要,驻澳用于记录日志，在构造方法中进行实例化
-
+	
+	// 这个日志工具暂时没有必要,主要用于记录日志，在构造方法中进行实例化
+	Logger logger = LogManager.getLogger(this.getClass()); 
 	SessionFactory sessionFactory;
 	
 	@SuppressWarnings("rawtypes")

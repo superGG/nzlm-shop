@@ -1,8 +1,8 @@
 $(function(){
 	var focusFlag = false;
 
-	var index_htmlobj=$.ajax({url:"categories.txt",async:false});
-//	var index_htmlobj = $.ajax({url:"http://localhost:8080/shoppingsolr2/goods_getCategory.action",async:false});
+//	var index_htmlobj=$.ajax({url:"categories.txt",async:false});
+	var index_htmlobj = $.ajax({url:"http://localhost:8080/shoppingsolr2/solr_getCategory.action",async:false});
 	window.categories = eval(index_htmlobj.responseText);
 
 	$.each(categories,function(i,data) {
@@ -17,7 +17,7 @@ $(function(){
 			var type2 = $("<li></li>");
 				type2.text(data2.name);
 				type2.on("click",function(){
-					window.location.href ="goodslist.html?goodstype2 = " + data2.name;
+					window.location.href ="goodslist.html?goodstype2=" + data2.name;
 				});
 			$('.show_class .title ul').eq(i).append(type2);
 			$(".other_class > div").eq(i).append("<ul></ul>");

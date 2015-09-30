@@ -128,6 +128,7 @@ public class SolrAction extends BaseAction<GoodsVo> {
 	 * @throws Exception
 	 */
 	public String queryByAttributes() throws Exception {
+		
 		if (model.getGoodsattributes() != null) {
 			logger.debug("godosattributes : "+model.getGoodsattributes());
 			String jsonString = ToJson.getGson().toJson(
@@ -150,6 +151,7 @@ public class SolrAction extends BaseAction<GoodsVo> {
 	 */
 	public String queryByType() throws SolrServerException, IOException {
 		String jsonString = null;
+		System.out.println(model);
 		if (model.getGoodstype3() != null) {
 			logger.debug("type3 : "+model.getGoodstype3());
 			jsonString = ToJson.getGson().toJson(
