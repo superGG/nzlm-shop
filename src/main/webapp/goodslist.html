@@ -38,11 +38,11 @@
 		<section class="container">
 			<div class="class_selection_container">
 				<div class="ad_img"></div>
-				<div class="class_selection">
-					<ul>
-					</ul>
-					<ol>
-					</ol>
+				<div class="form">
+					<input type="text" class="text" accesskey="s" id="key" autocomplete="off" onkeydown="javascript:if(event.keyCode==13) search('key');" >				
+					<button class="button cw-icon" onclick="search('key');return false;" > <i></i>
+						搜索
+					</button>
 				</div>
 			</div>
 
@@ -62,10 +62,17 @@
 						<li>排序方式3</li>
 						<li>排序方式4</li>
 					</ul>
+					<div class="price">价格：<input type="text" id="top-price"> - <input type="text" id="down-price"><a href="javascript:;" class="button">正确</a></div>
 				</div>
 
 				<div class="goods_show">
 					<ul>
+						<li>
+							<div class="good_img">
+								<img src="img/Q5423EFZ41_CGR0_N01.JPG" class="imgdown">
+							</div>
+							<span class="price">60</span> <em>1000</em>
+						</li>
 					</ul>
 				</div>
 			</div>
