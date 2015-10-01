@@ -2,7 +2,7 @@ package com.earl.shopping.daoImpl.test;
 
 import static org.junit.Assert.fail;
 
-
+import org.jmock.auto.Mock;
 import org.junit.Test;
 
 import com.earl.shopping.dao.GoodsDao;
@@ -13,19 +13,14 @@ public class GoodsDaoImplTest {
 
 	GoodsDao goodsDao = new GoodsDaoImpl();
 	
-	@Test
-	public void testBaseDaoImpl() {
-	}
-
-	@Test
-	public void testGetCurrentSession() {
-		fail("Not yet implemented");
-	}
-
+  
 	//TODO lala
 	@Test
 	public void testSave() {
 		GoodsPo goods = new GoodsPo();
+		goods.setCategory(1);
+		goods.setGoodsattributes("商品类别");
+		goods.setGoodspic("123");
 		goodsDao.save(goods);
 	}
 
