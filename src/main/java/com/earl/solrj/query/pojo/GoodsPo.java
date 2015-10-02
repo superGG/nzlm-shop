@@ -1,6 +1,5 @@
 package com.earl.solrj.query.pojo;
 
-import java.util.List;
 
 /**
  * 
@@ -14,7 +13,7 @@ public class GoodsPo {
 	private String goodsname;
 	
 	// 商品属性
-	private List<String> goodsattributes;
+	private String goodsattributes;
 	
 	// 商品价格
 	private Float goodsprice;
@@ -27,6 +26,9 @@ public class GoodsPo {
 
 	// 商品标签(关键字)
 	private String goodslabel;
+	
+	//最低类别id
+	private Integer typeId;
 
 	public Integer getId() {
 		return id;
@@ -59,11 +61,11 @@ public class GoodsPo {
 	public void setGoodsname(String goodsname) {
 		this.goodsname = goodsname;
 	}
-	public List<String> getGoodsattributes() {
+	public String getGoodsattributes() {
 		return goodsattributes;
 	}
 
-	public void setGoodsattributes(List<String> goodsattributes) {
+	public void setGoodsattributes(String goodsattributes) {
 		this.goodsattributes = goodsattributes;
 	}
 
@@ -83,4 +85,21 @@ public class GoodsPo {
 		this.ishot = ishot;
 	}
 
+	public Integer getTypeId() {
+		return typeId;
+	}
+
+	public void setTypeId(Integer typeId) {
+		this.typeId = typeId;
+	}
+
+	@Override
+	public String toString() {
+		return "GoodsPo [id=" + id + ", goodsname=" + goodsname
+				+ ", goodsattributes=" + goodsattributes + ", goodsprice="
+				+ goodsprice + ", goodspic=" + goodspic + ", ishot=" + ishot
+				+ ", goodslabel=" + goodslabel + ", typeId=" + typeId + "]";
+	}
+
+	
 }

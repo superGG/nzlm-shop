@@ -2,16 +2,15 @@ package com.earl.shopping.daoImpl.test;
 
 import static org.junit.Assert.fail;
 
-
 import org.junit.Test;
 
-import com.earl.shopping.dao.GoodsDao;
-import com.earl.shopping.daoImpl.GoodsDaoImpl;
-import com.earl.solrj.query.pojo.GoodsPo;
+import com.earl.shopping.dao.TypesDao;
+import com.earl.shopping.daoImpl.TypesDaoImpl;
+import com.earl.solrj.query.pojo.TypesPo;
 
-public class GoodsDaoImplTest {
+public class TypesDaoImplTest {
 
-	GoodsDao goodsDao = new GoodsDaoImpl();
+	TypesDao typesDao = new TypesDaoImpl();
 	
 	@Test
 	public void testBaseDaoImpl() {
@@ -25,16 +24,11 @@ public class GoodsDaoImplTest {
 	//TODO lala
 	@Test
 	public void testSave() {
-		GoodsPo goods = new GoodsPo();
-		goods.setId(1);
-		goods.setGoodsname("苹果5s");
-		goods.setGoodsattributes("的双方各得双方都");
-		goods.setGoodslabel("苹果_手机");
-		goods.setGoodspic("afwfregfdgdg");
-		goods.setIshot(true);
-		goods.setTypeId(4);
-		goods.setGoodsprice(150f);
-		goodsDao.save(goods);
+		TypesPo types = new TypesPo();
+		types.setId(4);
+		types.setTypeName("苹果");
+		types.setParentTypeId(2);
+		typesDao.save(types);
 	}
 
 	@Test
@@ -49,8 +43,8 @@ public class GoodsDaoImplTest {
 
 	@Test
 	public void testGet() {
-		GoodsPo goodsPo = goodsDao.get(1);
-		System.out.println(goodsPo.toString());
+		TypesPo typesPo = typesDao.get(1);
+		System.out.println(typesPo.toString());
 	}
 
 	@Test
