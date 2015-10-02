@@ -23,7 +23,7 @@ public class SolrServerConfiguration {
 	
 	public SolrServerConfiguration(){
 		
-		serverUrls.add("http://192.168.1.104:8080/solr/db");
+		serverUrls.add("http://localhost:8082/solr/db");
 		retry = true;
 		
 	}

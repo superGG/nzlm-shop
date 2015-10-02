@@ -1,4 +1,4 @@
-package com.earl.solrj.query.pojo;
+﻿package com.earl.solrj.query.pojo;
 
 
 /**
@@ -9,25 +9,39 @@ public class GoodsPo {
 	
 	private Integer id;
 	
-	// 商品名称
+	/**
+	 *  商品名称
+	 */
 	private String goodsname;
 	
-	// 商品属性
+	/**
+	 * 商品属性
+	 */ 
 	private String goodsattributes;
 	
-	// 商品价格
+	/**
+	 * 商品价格
+	 */ 
 	private Float goodsprice;
 	
-	// 商品图片
+	/**
+	 * 商品图片
+	 */ 
 	private String goodspic;
 	
-	// 该商品是否是热点
+	/**
+	 * 该商品是否是热点
+	 */ 
 	private boolean ishot;
 
-	// 商品标签(关键字)
+	/**
+	 * 商品标签(关键字)
+	 */ 
 	private String goodslabel;
 	
-	//最低类别id
+	/**
+	 * 商品所属最低类别
+	 */
 	private Integer typeId;
 
 	public Integer getId() {
@@ -100,6 +114,5 @@ public class GoodsPo {
 				+ goodsprice + ", goodspic=" + goodspic + ", ishot=" + ishot
 				+ ", goodslabel=" + goodslabel + ", typeId=" + typeId + "]";
 	}
-
 	
 }
