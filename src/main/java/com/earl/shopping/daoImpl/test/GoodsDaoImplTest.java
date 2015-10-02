@@ -1,4 +1,4 @@
-package com.earl.shopping.daoImpl.test;
+﻿package com.earl.shopping.daoImpl.test;
 
 import static org.junit.Assert.fail;
 
@@ -18,9 +18,14 @@ public class GoodsDaoImplTest {
 	@Test
 	public void testSave() {
 		GoodsPo goods = new GoodsPo();
-		goods.setCategory(1);
-		goods.setGoodsattributes("商品类别");
-		goods.setGoodspic("123");
+		goods.setId(1);
+		goods.setGoodsname("苹果5s");
+		goods.setGoodsattributes("的双方各得双方都");
+		goods.setGoodslabel("苹果_手机");
+		goods.setGoodspic("afwfregfdgdg");
+		goods.setIshot(true);
+		goods.setTypeId(4);
+		goods.setGoodsprice(150f);
 		goodsDao.save(goods);
 	}
 
@@ -36,7 +41,8 @@ public class GoodsDaoImplTest {
 
 	@Test
 	public void testGet() {
-		fail("Not yet implemented");
+		GoodsPo goodsPo = goodsDao.get(1);
+		System.out.println(goodsPo.toString());
 	}
 
 	@Test

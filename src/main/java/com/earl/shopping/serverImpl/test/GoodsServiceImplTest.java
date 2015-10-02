@@ -1,4 +1,4 @@
-package com.earl.shopping.serverImpl.test;
+﻿package com.earl.shopping.serverImpl.test;
 
 import static org.junit.Assert.fail;
 
@@ -37,16 +37,25 @@ public class GoodsServiceImplTest {
 
 	@Test
 	public void testSaveGoods() {
-		final GoodsPo goods = new GoodsPo();
+		//final GoodsPo goods = new GoodsPo();
 		// expectations  
-		context.checking(new Expectations() {{  
-			oneOf (goodsDao).save(goods);  
-		}}); 
-		
+		//context.checking(new Expectations() {{  
+		//	oneOf (goodsDao).save(goods);  
+		//}}); 
+
+		GoodsPo goods = new GoodsPo();
+		goods.setId(2);
+		goods.setGoodsname("苹果6s");
+		goods.setGoodsattributes("S发电公司刚");
+		goods.setGoodslabel("苹果_手机");
+		goods.setGoodspic("aagergsthrh");
+		goods.setIshot(true);
+		goods.setTypeId(4);
+		goods.setGoodsprice(250f);
 		goodsService.save(goods);
 		
 		// verify  
-        context.assertIsSatisfied();  
+        //context.assertIsSatisfied();  
 	}
 
 	@Test

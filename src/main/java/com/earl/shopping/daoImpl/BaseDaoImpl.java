@@ -30,24 +30,20 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 
 	@SuppressWarnings("rawtypes")
 	Class clazz; // 用来存储BaseDaoImpl泛型T的实际类型
-	
 	// 这个日志工具暂时没有必要,主要用于记录日志，在构造方法中进行实例化
 	Logger logger = LogManager.getLogger(this.getClass()); 
 	SessionFactory sessionFactory;
 	
 	@SuppressWarnings("rawtypes")
 	public BaseDaoImpl() {
-//		logger = Logger.getLogger(this.getClass());
 		Type type = this.getClass().getGenericSuperclass();
 		ParameterizedType parameterizedType = (ParameterizedType) type;
 		Type genType = parameterizedType.getActualTypeArguments()[0];
 		System.out.println(genType + "-----baseDaoImpl");
 		this.clazz = (Class) genType;
-		logger.debug("construct " + clazz.getName() + " instance");
 	}
 
 	public Session getCurrentSession() {
-		logger.debug("进入getCurrentSession函数");
 		return HibernateHelper.getSessionFactory().getCurrentSession();
 	}
 
@@ -60,7 +56,6 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	 */
 	public void save(T t) {
 		System.out.println("dodo1");
-		logger.debug("saving " + clazz.getName() + " instance");
 		Transaction tran = getCurrentSession().beginTransaction();
 		getCurrentSession().save(t);
 		tran.commit();
@@ -68,27 +63,23 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 
 	// 更新对象
 	public boolean update(T t) {
-		logger.debug("update " + clazz.getName() + " instance");
 		try {
 			Transaction tran = getCurrentSession().beginTransaction();
 			getCurrentSession().update(t);
 			tran.commit();
 			return true;
 		} catch (Exception e) {
-			logger.debug(e);
 			return false;
 		}
 	}
 
 	// 根据ID删除对象
 	public void deleteById(int id) {
-		logger.debug("delete " + clazz.getName() + " instance");
 		delete(get(id));
 	}
 
 	@SuppressWarnings("unchecked")
 	public T get(int id) {
-		logger.debug("get " + clazz.getName() + " instance");
 		Transaction tran = getCurrentSession().beginTransaction();
 		T object = (T) getCurrentSession().get(clazz, id);
 		tran.commit();
@@ -107,7 +98,6 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 
 	// 删除所有对象
 	public void deleteAll() {
-		logger.debug("delete " + clazz.getName() + " instance");
 		Transaction tran = getCurrentSession().beginTransaction();
 		String hql = "delete from " + clazz.getName();
 		getCurrentSession().createQuery(hql).executeUpdate();
@@ -116,7 +106,6 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 
 	// 通过对象来进行删除
 	public void delete(T persistentInstance) {
-		logger.debug("delete " + clazz.getName() + " instance");
 		Transaction tran = getCurrentSession().beginTransaction();
 		getCurrentSession().delete(persistentInstance);
 		tran.commit();
@@ -143,7 +132,6 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		// 业务逻辑结束
 		HibernateHelper.getSessionFactory().getCurrentSession()
 				.getTransaction().commit();
-		logger.debug("退出findByGivenCreteria方法");
 		return listObject;
 	}
 

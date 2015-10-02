@@ -54,6 +54,7 @@
 
 	<!-- 是否是基于注解的hibernate，默认是开启的 -->
 	<property name="javax.persistence.validation.mode">none</property>
-	<mapping resource="com/earl/solrj/query/pojo/Goods.hbm.xml" />
+	<mapping resource="com/earl/solrj/query/pojo/GoodsPo.hbm.xml" />
+	<mapping resource="com/earl/solrj/query/pojo/TypesPo.hbm.xml" />
 </session-factory>
 </hibernate-configuration>

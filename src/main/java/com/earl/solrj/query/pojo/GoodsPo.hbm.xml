@@ -16,7 +16,7 @@
         <property name="goodsprice" type="java.lang.Float" column="goodsprice" />
         <property name="goodspic" type="java.lang.String" column="goodspic" />
         <property name="ishot" type="java.lang.Boolean" column="ishot" />
-        <property name="goodslabel" type="java.lang.String" column="goodslabel"/>
-        <property name="category" type="java.lang.Integer" column="category"/>
+        <property name="goodslabel" type="java.lang.String" column="goodslabel" />
+        <property name="typeId" type="java.lang.Integer" column="typeId" />
     </class>
 </hibernate-mapping>

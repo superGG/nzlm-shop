@@ -35,6 +35,14 @@ public class GoodsServiceImpl extends BaseServiceImpl<GoodsPo> implements
 		super.deleteById(id);
 	}
 	
+	public void update(GoodsPo goods) {
+		super.update(goods);
+	}
+	
+	public GoodsPo get(Integer id) {
+		return (GoodsPo) super.get(id);
+	}
+	
 	
 	public List<GoodsPo> queryByWord(GoodsPo goods){
 		

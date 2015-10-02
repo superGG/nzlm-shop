@@ -1,6 +1,5 @@
-package com.earl.solrj.query.pojo;
+﻿package com.earl.solrj.query.pojo;
 
-import java.util.List;
 
 /**
  * 
@@ -43,9 +42,7 @@ public class GoodsPo {
 	/**
 	 * 商品所属最低类别
 	 */
-	private Integer category;
-
-	
+	private Integer typeId;
 
 	public Integer getId() {
 		return id;
@@ -102,12 +99,20 @@ public class GoodsPo {
 		this.ishot = ishot;
 	}
 
-	public Integer getCategory() {
-		return category;
+	public Integer getTypeId() {
+		return typeId;
 	}
 
-	public void setCategory(Integer category) {
-		this.category = category;
+	public void setTypeId(Integer typeId) {
+		this.typeId = typeId;
+	}
+
+	@Override
+	public String toString() {
+		return "GoodsPo [id=" + id + ", goodsname=" + goodsname
+				+ ", goodsattributes=" + goodsattributes + ", goodsprice="
+				+ goodsprice + ", goodspic=" + goodspic + ", ishot=" + ishot
+				+ ", goodslabel=" + goodslabel + ", typeId=" + typeId + "]";
 	}
 	
 }
