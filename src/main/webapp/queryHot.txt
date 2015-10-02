@@ -1,0 +1,134 @@
+[
+    {
+        "id": "1",
+        "goodsname": "U盘",
+        "goodsattributes": [
+            "容量_16G",
+            "颜色_金色",
+            "接口_3.0",
+            "生成商_金士顿",
+            "品牌_金士顿"
+        ],
+        "goodsprice": 60.0,
+        "goodspic": "http:url:8080",
+        "ishot": true,
+        "goodslabel": "金士顿_U盘_16G",
+        "goodstype1": "电子产品",
+        "goodstype2": "U盘"
+    },
+    {
+        "id": "2",
+        "goodsname": "U盘",
+        "goodsattributes": [
+            "容量_32G",
+            "颜色_金色",
+            "接口_3.0",
+            "生成商_金士顿",
+            "品牌_金士顿"
+        ],
+        "goodsprice": 60.0,
+        "goodspic": "http:url:8080",
+        "ishot": true,
+        "goodslabel": "金士顿_U盘_16G",
+        "goodstype1": "电子产品",
+        "goodstype2": "U盘"
+    },
+    {
+        "id": "3",
+        "goodsname": "U盘",
+        "goodsattributes": [
+            "容量_64G",
+            "颜色_银色",
+            "接口_3.0",
+            "生成商_金士顿",
+            "品牌_金士顿"
+        ],
+        "goodsprice": 60.0,
+        "goodspic": "http:url:8080",
+        "ishot": true,
+        "goodslabel": "金士顿_U盘_16G",
+        "goodstype1": "电子产品",
+        "goodstype2": "U盘"
+    },
+    {
+        "id": "4",
+        "goodsname": "高氯氟•噻嗪 200ml*1瓶",
+        "goodsattributes": [
+            "作用_杀虫",
+            "作用于_大田",
+            "规格_200ml*1瓶",
+            "生成商_111",
+            "品牌_杜邦"
+        ],
+        "goodsprice": 160.0,
+        "goodspic": "http:url:8080",
+        "ishot": true,
+        "goodslabel": "农药_杀虫剂_杜邦",
+        "goodstype1": "农药",
+        "goodstype2": "杀虫剂"
+    },
+    {
+        "id": "5",
+        "goodsname": "高氯氟•噻嗪 1000ml*1瓶",
+        "goodsattributes": [
+            "作用_杀虫",
+            "作用于_大田",
+            "规格_1000ml*1瓶",
+            "生成商_111",
+            "品牌_杜邦"
+        ],
+        "goodsprice": 160.0,
+        "goodspic": "http:url:8080",
+        "ishot": true,
+        "goodslabel": "农药_杀虫剂_杜邦",
+        "goodstype1": "农药",
+        "goodstype2": "杀虫剂"
+    },
+    {
+        "id": "6",
+        "goodsname": "绿色超人超甜水果玉米种子",
+        "goodsattributes": [
+            "规格_100g*1包",
+            "生成商_222",
+            "品牌_寿禾"
+        ],
+        "goodsprice": 10.0,
+        "goodspic": "http:url:8080",
+        "ishot": true,
+        "goodslabel": "种子_玉米_寿禾",
+        "goodstype1": "种子",
+        "goodstype2": "玉米种子"
+    },
+    {
+        "id": "7",
+        "goodsname": "魅蓝2",
+        "goodsattributes": [
+            "尺寸_5.0",
+            "颜色_蓝色",
+            "生成商_魅族",
+            "品牌_魅族"
+        ],
+        "goodsprice": 599.0,
+        "goodspic": "http:url:8080",
+        "ishot": true,
+        "goodslabel": "魅族_魅蓝_手机",
+        "goodstype1": "电子产品",
+        "goodstype2": "手机"
+    },
+    {
+        "id": "8",
+        "goodsname": "魅蓝note",
+        "goodsattributes": [
+            "尺寸_5.5",
+            "颜色_金色",
+            "生成商_魅族",
+            "品牌_魅族"
+        ],
+        "goodsprice": 1099.0,
+        "goodspic": "http:url:8080",
+        "ishot": true,
+        "goodslabel": "魅族_魅蓝_手机",
+        "goodstype1": "电子产品",
+        "goodstype2": "手机"
+    }
+]
