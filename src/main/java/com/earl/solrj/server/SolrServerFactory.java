@@ -170,6 +170,7 @@ public class SolrServerFactory {
 		solrClient.setParser(this.conf.getResponseParser());
 		solrClient.setSoTimeout(this.conf.getReadTimeout());
 		solrClient.setRequestWriter(this.conf.getRequestWriter());
+		
 		return solrClient;
 	}
 

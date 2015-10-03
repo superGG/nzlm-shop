@@ -27,7 +27,6 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 
 	@SuppressWarnings("unchecked")
 	public void save(T model) {
-		Assert.assertNotNull("baseDao is null", baseDao);
 
 		baseDao.save(model);
 	}

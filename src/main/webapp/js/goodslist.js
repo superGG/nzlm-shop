@@ -47,7 +47,17 @@ $(function () {
     });
     
     $(".price > a").on("click",function(){
-    	 $.post('http://localhost:8080/shoppingsolr2/solr_queryByPrice.action',{'maxPrice':$("#top-price").val(),'minPrice' : $("#down-price").val()},
+    	 while(postModel.length > 1){
+         	postModel.pop();
+         }
+         $(".classification_attr .press").parent().siblings().each(function (i, data2) {
+             var mydata = $(data2).html() + '_' + $(data2).siblings().find(".press").html();
+             mydata = mydata.substring(0,mydata.indexOf("("));
+             postModel.push({ name : 'goodsattributes', value : mydata});
+         });
+         postModel.push({name:'maxPrice',value:$("#top-price").val()});
+         postModel.push({name:'minPrice',value:$("#down-price").val()});
+    	 $.post('http://localhost:8080/shoppingsolr2/solr_queryByPrice.action',postModel,
           		function(data){
               console.log(eval(data));
               keyWordGoods = eval(data);
@@ -84,6 +94,7 @@ $(function () {
                 }
                 $(".classification_attr .press").parent().siblings().each(function (i, data2) {
                     var mydata = $(data2).html() + '_' + $(data2).siblings().find(".press").html();
+                    mydata = mydata.substring(0,mydata.indexOf("("));
                     postModel.push({ name : 'goodsattributes', value : mydata});
                 });
                 //console.log(postModel);

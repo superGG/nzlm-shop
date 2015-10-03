@@ -396,7 +396,8 @@ public class SolrService {
 			for (Count string : facetField.getValues()) {
 				int pos = string.getName().indexOf("_");
 				String attributeName = string.getName().substring(0, pos);
-				String attributeValue = string.getName().substring(pos + 1);
+				String attributeValue = string.getName().substring(pos + 1)
+						+ "("+string.getCount() + ")";
 				if (map.get(attributeName) != null) {
 					List<String> valueList = new ArrayList<String>();
 					valueList = map.get(attributeName);
