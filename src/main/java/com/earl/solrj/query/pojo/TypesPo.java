@@ -12,9 +12,16 @@ public class TypesPo {
 	//类别名
 	private String typeName;
 	//父类别id
-	private Integer parentTypeId;
+//	private Integer parentTypeId;
 	
+	private TypesPo parentType;
 	
+	public TypesPo getParentType() {
+		return parentType;
+	}
+	public void setParentType(TypesPo parentType) {
+		this.parentType = parentType;
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -27,18 +34,9 @@ public class TypesPo {
 	public void setTypeName(String typeName) {
 		this.typeName = typeName;
 	}
-	public Integer getParentTypeId() {
-		return parentTypeId;
-	}
-	public void setParentTypeId(Integer parentTypeId) {
-		this.parentTypeId = parentTypeId;
-	}
-	
 	@Override
 	public String toString() {
-		return "TypesPo [typeId=" + id + ", typeName=" + typeName
-				+ ", parentTypeId=" + parentTypeId + "]";
+		return "TypesPo [id=" + id + ", typeName=" + typeName + ", parentType="
+				+ parentType + "]";
 	}
-	
-	
 }

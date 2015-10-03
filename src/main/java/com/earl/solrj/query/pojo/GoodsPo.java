@@ -15,7 +15,7 @@ public class GoodsPo {
 	private String goodsname;
 	
 	/**
-	 * 商品属性
+	 * 商品属性,品牌_魅蓝;颜色_蓝色;
 	 */ 
 	private String goodsattributes;
 	

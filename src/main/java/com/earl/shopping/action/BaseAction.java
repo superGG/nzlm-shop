@@ -4,14 +4,13 @@ import java.io.InputStream;
 import java.lang.reflect.ParameterizedType;
 import java.util.Map;
 
-import javax.annotation.Resource;
-
 import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
-import com.earl.shopping.server.CategoryService;
 import com.earl.shopping.server.GoodsService;
+import com.earl.shopping.server.TypesService;
+import com.earl.shopping.serverImpl.GoodsServiceImpl;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -36,9 +35,9 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,
 		return jsonInputStream;
 	}
 	//TODO 需要手动注入Server
-	protected GoodsService goodsServer;
+	protected GoodsService goodsServer = GoodsServiceImpl.getInstance();
 	
-	protected CategoryService categoryServer;
+	protected TypesService typesServer;
 	
 
 	@SuppressWarnings("unchecked")
