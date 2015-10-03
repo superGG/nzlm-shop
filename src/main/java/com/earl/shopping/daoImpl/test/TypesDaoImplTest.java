@@ -17,17 +17,15 @@ public class TypesDaoImplTest {
 	}
 
 	@Test
-	public void testGetCurrentSession() {
-		fail("Not yet implemented");
-	}
-
-	//TODO lala
-	@Test
 	public void testSave() {
 		TypesPo types = new TypesPo();
-		types.setId(4);
+		TypesPo parentType = new TypesPo();
+		parentType.setId(4);
+//		parentType.setTypeName("苹果fuqin");
+		
 		types.setTypeName("苹果");
-		types.setParentTypeId(2);
+		types.setParentType(parentType);
+//		types.setParentTypeId(parentType);
 		typesDao.save(types);
 	}
 
@@ -67,4 +65,9 @@ public class TypesDaoImplTest {
 		fail("Not yet implemented");
 	}
 
+	@Test
+	public void testGetTypes(){
+		typesDao.getTypes(3);
+	}
+	
 }

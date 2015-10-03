@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+        
+        
+<hibernate-mapping package="com.earl.solrj.query.pojo">
+    <class name="GoodsPo" table="goods" dynamic-update="true" dynamic-insert="true">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="native"></generator>
+        </id>
+        
+        <property name="goodsname" type="java.lang.String" column="goodsname" />
+        <property name="goodsattributes" type="java.lang.String" column="goodsattributes" />
+        <property name="goodsprice" type="java.lang.Float" column="goodsprice" />
+        <property name="goodspic" type="java.lang.String" column="goodspic" />
+        <property name="ishot" type="java.lang.Boolean" column="ishot" />
+        <property name="goodslabel" type="java.lang.String" column="goodslabel" />
+        <property name="typeId" type="java.lang.Integer" column="typeId" />
+    </class>
+</hibernate-mapping>

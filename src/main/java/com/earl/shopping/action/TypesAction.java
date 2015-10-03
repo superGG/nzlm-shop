@@ -3,7 +3,7 @@ package com.earl.shopping.action;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.earl.solrj.query.pojo.CategoryPo;
+import com.earl.solrj.query.pojo.TypesPo;
 
 /**
  * 
@@ -12,7 +12,7 @@ import com.earl.solrj.query.pojo.CategoryPo;
  * @author Administrator
  * 
  */
-public class CategoryAction extends BaseAction<CategoryPo> {
+public class TypesAction extends BaseAction<TypesPo> {
 
 	Logger logger = LogManager.getLogger(this.getClass());
 	/**
@@ -24,7 +24,7 @@ public class CategoryAction extends BaseAction<CategoryPo> {
 	// 添加索引.
 	public void addCategory() throws Exception {
 		// 从前端获取到的Po 转成 Vo 再进行,同时保存po到数据库
-		categoryServer.save(model);
+		typesServer.save(model);
 		
 	}
 
@@ -35,7 +35,7 @@ public class CategoryAction extends BaseAction<CategoryPo> {
 	 */
 	public void deleGoodsAction() throws Exception {
 		
-		categoryServer.deleteById(model.getId());
+		typesServer.deleteById(model.getId());
 	}
 	
 	/**
@@ -47,6 +47,6 @@ public class CategoryAction extends BaseAction<CategoryPo> {
 	 */
 		public void updateGoodsAction() throws Exception {
 		
-		categoryServer.update(model);
+		typesServer.update(model);
 	}
 }
