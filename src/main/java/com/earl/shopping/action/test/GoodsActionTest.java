@@ -28,6 +28,7 @@ public class GoodsActionTest extends StrutsJUnit4TestCase<GoodsAction> {
 		request.addParameter("typeId", "5");
 		logger.debug("pathInfo "+request.getPathInfo());
 		String res = executeAction("/goods_addGoods.action");
+			
 	}
 
 	@Test

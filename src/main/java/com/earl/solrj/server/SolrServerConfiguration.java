@@ -108,7 +108,7 @@ public class SolrServerConfiguration {
 	/**
 	 * 连接等待时长
 	 */
-	public static final int CONNECTION_TIMEOUT = 500;
+	public static final int CONNECTION_TIMEOUT = 60000;
 	/**
 	 * 每个服务器最多并发连接数
 	 */
@@ -120,7 +120,7 @@ public class SolrServerConfiguration {
 	/**
 	 * 等待响应时长
 	 */
-	public static final int READ_TIMEOUT = 1500;
+	public static final int READ_TIMEOUT = 60000;
 	/**
 	 * 服务器活动检测时间间隔
 	 */

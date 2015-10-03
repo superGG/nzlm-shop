@@ -35,4 +35,4 @@ insert into types(id,typeName,parentTypeId) value(5,'苹果5',3);
 insert into types(id,typeName,parentTypeId) value(6,'苹果6',1);
 insert into types(id,typeName,parentTypeId) value(7,'苹果7',1);
 
-select * from types;
+select * from goods;

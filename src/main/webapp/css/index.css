@@ -38,6 +38,12 @@ body{
 	color: #fff;
 }
 
+.top_nav li a {
+	text-decoration: none;
+	color: #fff;
+	font-weight: 900;
+}
+
 .top_nav li:last-child{
 	border-right: 1px solid #4D4D4D;
 }
