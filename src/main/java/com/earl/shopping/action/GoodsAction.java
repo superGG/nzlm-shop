@@ -1,7 +1,5 @@
 package com.earl.shopping.action;
 
-import java.io.InputStream;
-
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -45,17 +43,11 @@ public class GoodsAction extends BaseAction<GoodsPo> {
 	}
 
 	// 添加索引.
-	public void addGoodsAction() throws Exception {
+	public void addGoods() throws Exception {
 		// 从前端获取到的Po 转成 Vo 再进行,同时保存po到数据库
 		goodsServer.save(model);
-		GoodsVo goodsVo = new GoodsVo();
-		BeanUtils.copyProperties(goodsVo, model);
-		//属性之间的分割符；
-		//TODO List循环裝入String[]
-		model.getGoodsattributes().split(";");
-//		goodsVo.setGoodsattributes();
-		
-		solrServer.addBeanIndex(goodsServer.getCategory(model,goodsVo));
+		GoodsVo goodsVo = goodsServer.PoToVo(model);
+		solrServer.addBeanIndex(goodsVo);
 	}
 
 	/**

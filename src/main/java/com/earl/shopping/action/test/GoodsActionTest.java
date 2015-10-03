@@ -18,8 +18,16 @@ public class GoodsActionTest extends StrutsJUnit4TestCase<GoodsAction> {
 	Logger logger = LogManager.getLogger(this.getClass());
 
 	@Test
-	public void testAddGoodsAction() {
-		fail("Not yet implemented");
+	public void testAddGoodsAction() throws UnsupportedEncodingException, ServletException {
+		request.addParameter("goodsname", "U盘");
+		request.addParameter("goodsattributes", "品牌_魅蓝;颜色_蓝色;");
+		request.addParameter("goodsprice", "23");
+		request.addParameter("goodspic", "http:8080/solr/slkdjfsdlkfj");
+		request.addParameter("ishot", "true");
+		request.addParameter("goodslabel", "U盘");
+		request.addParameter("typeId", "5");
+		logger.debug("pathInfo "+request.getPathInfo());
+		String res = executeAction("/goods_addGoods.action");
 	}
 
 	@Test

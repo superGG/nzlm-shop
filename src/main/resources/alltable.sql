@@ -26,3 +26,13 @@ create table `types` (
 	`parentTypeId` Int(50),
 	primary key(id)
 );
+
+insert into types(id,typeName,parentTypeId) value(1,'苹果1',null);
+insert into types(id,typeName,parentTypeId) value(2,'苹果2',1);
+insert into types(id,typeName,parentTypeId) value(3,'苹果3',1);
+insert into types(id,typeName,parentTypeId) value(4,'苹果4',3);
+insert into types(id,typeName,parentTypeId) value(5,'苹果5',3);
+insert into types(id,typeName,parentTypeId) value(6,'苹果6',1);
+insert into types(id,typeName,parentTypeId) value(7,'苹果7',1);
+
+select * from types;

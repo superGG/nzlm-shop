@@ -4,4 +4,6 @@ import com.earl.solrj.query.pojo.TypesPo;
 
 public interface TypesDao extends BaseDao<TypesPo>{
 
+	TypesPo getTypes(int typesId);
+
 }
