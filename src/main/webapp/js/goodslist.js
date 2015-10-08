@@ -36,7 +36,7 @@ $(function () {
              $.each(keyWordGoods, function (i, data) {
                  var goods = $("<li></li>").append(
                      $("<div class='good_img'></div>").append(
-                         $("<img />").attr("src", "img/Q5423EFZ41_CGR0_N01.JPG"))).append(
+                         $("<img />").attr("src", data.goodspic))).append(
                      $("<a class='name'></a>").attr("href", data.goodspic).html(data.goodsname)).append(
                      $("<span class='price'></span>").text(data.goodsprice)).append(
                      $("<em></em>").append($("<img />").attr("src", "img/icon_cart.png")).html("1000"));
@@ -65,7 +65,7 @@ $(function () {
               $.each(keyWordGoods, function (i, data) {
                   var goods = $("<li></li>").append(
                       $("<div class='good_img'></div>").append(
-                          $("<img />").attr("src", "img/Q5423EFZ41_CGR0_N01.JPG"))).append(
+                          $("<img />").attr("src", data.goodspic))).append(
                       $("<a class='name'></a>").attr("href", data.goodspic).html(data.goodsname)).append(
                       $("<span class='price'></span>").text(data.goodsprice)).append(
                       $("<em></em>").append($("<img />").attr("src", "img/icon_cart.png")).html("1000"));
@@ -113,7 +113,7 @@ $(function () {
                     $.each(keyWordGoods, function (i, data) {
                         var goods = $("<li></li>").append(
                             $("<div class='good_img'></div>").append(
-                                $("<img />").attr("src", "img/Q5423EFZ41_CGR0_N01.JPG"))).append(
+                                $("<img />").attr("src", data.goodspic))).append(
                             $("<a class='name'></a>").attr("href", data.goodspic).html(data.goodsname)).append(
                             $("<span class='price'></span>").text(data.goodsprice)).append(
                             $("<em></em>").append($("<img />").attr("src", "img/icon_cart.png")).html("1000"));
@@ -133,7 +133,7 @@ $(function () {
     $.each(keyWordGoods, function (i, data) {
         var goods = $("<li></li>").append(
             $("<div class='good_img'></div>").append(
-                $("<img />").attr("src", "img/Q5423EFZ41_CGR0_N01.JPG"))).append(
+                $("<img />").attr("src", data.goodspic))).append(
             $("<a class='name'></a>").attr("href", data.goodspic).html(data.goodsname)).append(
             $("<span class='price'></span>").text(data.goodsprice)).append(
             $("<em></em>").append($("<img />").attr("src", "img/icon_cart.png")).html("1000"));

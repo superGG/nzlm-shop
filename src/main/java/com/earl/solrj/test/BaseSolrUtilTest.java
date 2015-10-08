@@ -81,14 +81,14 @@ public class BaseSolrUtilTest {
 	@Test
 	public void testDeleteByQuery() throws Exception {
 
-		solrUtil.deleteByQuery("id:*");
+		solrUtil.deleteByQuery("id:6");
 		System.out.println("删除成功");
 	}
 
 	// 根据关键字查询.
 	@Test
 	public void testQueryByLabel() throws Exception {
-		String label = "魅蓝手机";
+		String label = "魅蓝";
 		List<Object> beansList = solrUtil.queryBean(label);
 		for (Object object : beansList) {
 			System.out.println(object.toString());
