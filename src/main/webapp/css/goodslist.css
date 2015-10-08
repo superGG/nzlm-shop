@@ -158,7 +158,7 @@ header,nav,footer{
 .main .container .class_selection_container .form{
 	height: 36px;
 	/*width: auto;*/
-	width: 560px;
+	/*width: 560px;*/
 	margin: 50px auto;
 	padding:20px;
 	text-align: center;
@@ -327,12 +327,15 @@ header,nav,footer{
 }
 
 .main .container .goods_list .goods_show ul li a{
-	/*display: block;*/
+	display: block;
 	font-size: 15px;
 	color: #888;
+	padding: 0 10px;
 	font-weight: 800;
 	text-decoration: none;
 	line-height: 25px;
+	height: 50px;
+	overflow: hidden;
 }
 
 .main .container .goods_list .goods_show ul li .price{
@@ -371,6 +374,11 @@ header,nav,footer{
 
 .main .container .goods_list .goods_show ul li .good_img:hover img{
 	-webkit-animation: imgshow 1s ease-in-out 1 forwards;	
+}
+
+.main .container .goods_list .goods_show ul li .good_img img {
+	max-width: 150px;
+	max-height: 150px;
 }
 
 .main .container .goods_list .goods_show ul li .row {
