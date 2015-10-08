@@ -126,6 +126,8 @@ public class SolrService {
 		String queryString = getQueryStringWithOR(notNullProperties);
 
 		SolrQuery query = new SolrQuery(queryString.toString());
+		query.set("start", 0);
+		query.set("rows", 99999);
 		List<GoodsVo> beans = queryBeans(query);
 
 		return beans;
@@ -153,6 +155,8 @@ public class SolrService {
 		StringBuilder solrQuery = new StringBuilder();
 		solrQuery.append(solr);
 		query.setQuery(solrQuery.toString());
+		query.set("start", 0);
+		query.set("rows", 99999);
 		List<GoodsVo> beans = queryBeans(query);
 		return beans;
 	}
@@ -183,6 +187,8 @@ public class SolrService {
 					.append(str);
 		}
 		query.setQuery(solrQuery.toString());
+		query.set("start", 0);
+		query.set("rows", 99999);
 		List<GoodsVo> beans = queryBeans(query);
 		return beans;
 	}
@@ -225,6 +231,8 @@ public class SolrService {
 			}
 		}
 		query.setQuery(solrQuery.toString());
+		query.set("start", 0);
+		query.set("rows", 99999);
 		List<GoodsVo> beans = queryBeans(query);
 		return beans;
 	}
@@ -256,7 +264,8 @@ public class SolrService {
 
 		query.setHighlightSimplePre("<font color=\"red\">");
 		query.setHighlightSimplePost("</font>");
-
+		query.set("start", 0);
+		query.set("rows", 99999);
 		QueryResponse response = queryClient.query(query);
 		SolrDocumentList doucmentList = new SolrDocumentList();
 		SolrDocument document = null;
@@ -332,7 +341,8 @@ public class SolrService {
 		SolrClient querySolrClient = this.masterFactory.getQuerySolrClient();
 		FacetFilter facetFilter = new FacetFilter();
 		SolrQuery solrQuery = new SolrQuery();
-
+		solrQuery.set("start", 0);
+		solrQuery.set("rows", 99999);
 		if (goods.getGoodstype1() == null && goods.getGoodstype2() == null
 				&& goods.getGoodstype3() == null) {
 			solrQuery.setQuery("* : *");
@@ -375,6 +385,8 @@ public class SolrService {
 
 		SolrClient querySolrClient = this.masterFactory.getQuerySolrClient();
 		SolrQuery solrQuery = new SolrQuery();
+		solrQuery.set("start", 0);
+		solrQuery.set("rows", 99999);
 		FacetFilter facetFilter = new FacetFilter();
 
 		if (goods.getGoodstype3() != null) {
@@ -517,7 +529,8 @@ public class SolrService {
 		Map<String, Map<String, List<String>>> myMap = new HashMap<String, Map<String, List<String>>>();
 		SolrClient queryClient = this.masterFactory.getQuerySolrClient();
 		SolrQuery query = new SolrQuery("* : *");
-
+		query.set("start", 0);
+		query.set("rows", 9999);
 		QueryResponse response = queryClient.query(query);
 
 		List<GoodsVo> beans = response.getBeans(GoodsVo.class);

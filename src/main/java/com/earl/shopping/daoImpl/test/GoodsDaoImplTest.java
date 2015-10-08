@@ -2,7 +2,6 @@
 
 import static org.junit.Assert.fail;
 
-import org.jmock.auto.Mock;
 import org.junit.Test;
 
 import com.earl.shopping.dao.GoodsDao;

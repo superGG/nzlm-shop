@@ -2,14 +2,9 @@
 
 import static org.junit.Assert.fail;
 
-import org.jmock.Expectations;
-import org.jmock.Mockery;
-import org.junit.Before;
 import org.junit.Test;
 
-import com.earl.shopping.dao.GoodsDao;
 import com.earl.shopping.server.GoodsService;
-import com.earl.shopping.serverImpl.GoodsServiceImpl;
 import com.earl.solrj.query.pojo.GoodsPo;
 
 
@@ -18,17 +13,17 @@ public class GoodsServiceImplTest {
 	
 	GoodsService goodsService;
 	
-	private GoodsDao goodsDao = null;  
+//	private GoodsDao goodsDao = null;  
 	
-	Mockery context = new Mockery();
-	
-	@Before
-	public void setUp() throws Exception {
-         goodsDao = context.mock(GoodsDao.class);
-         
-         
-         goodsService = new GoodsServiceImpl(goodsDao);
-     }
+//	Mockery context = new Mockery();
+//	
+//	@Before
+//	public void setUp() throws Exception {
+//         goodsDao = context.mock(GoodsDao.class);
+//         
+//         
+//         goodsService = new GoodsServiceImpl(goodsDao);
+//     }
 
 	@Test
 	public void testGoodsServiceImpl() {

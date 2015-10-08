@@ -27,12 +27,15 @@ create table `types` (
 	primary key(id)
 );
 
-insert into types(id,typeName,parentTypeId) value(1,'苹果1',null);
-insert into types(id,typeName,parentTypeId) value(2,'苹果2',1);
-insert into types(id,typeName,parentTypeId) value(3,'苹果3',1);
-insert into types(id,typeName,parentTypeId) value(4,'苹果4',3);
-insert into types(id,typeName,parentTypeId) value(5,'苹果5',3);
-insert into types(id,typeName,parentTypeId) value(6,'苹果6',1);
-insert into types(id,typeName,parentTypeId) value(7,'苹果7',1);
+insert into types(id,typeName,parentTypeId) values (1,'电子产品',null);
+insert into types(id,typeName,parentTypeId) values (2,'U盘',1);
+insert into types(id,typeName,parentTypeId) values (3,'手机',1);
+insert into types(id,typeName,parentTypeId) values (4,'魅族',3);
+insert into types(id,typeName,parentTypeId) values (5,'iphone',3);
+insert into types(id,typeName,parentTypeId) values (6,'小米',3);
+insert into types(id,typeName,parentTypeId) values (7,'金士顿',2);
+insert into types(id,typeName,parentTypeId) values (8,'Sandisk',2);
+insert into types(id,typeName,parentTypeId) values (9,'东芝',2);
+
 
 select * from goods;
