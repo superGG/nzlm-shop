@@ -16,16 +16,16 @@ $(function(){
 
 			var type2 = $("<li></li>");
 				type2.text(data2.name);
-				type2.on("click",function(){
+				/*type2.on("click",function(){
 					window.location.href ="goodslist.html?goodstype2=" + data2.name;
-				});
+				});*/
 			$('.show_class .title ul').eq(i).append(type2);
 			$(".other_class > div").eq(i).append("<ul></ul>");
 			$.each(data2.type3,function(u,data3){
 				var type3 = $("<li></li>");
 				type3.text(data3);
 				type3.on("click",function(){
-					window.location.href ="goodslist.html?goodstype3 = " + data3;
+					window.location.href ="goodslist.html?goodstype3=" + data3;
 				});
 				$(".other_class").eq(i).find("div ul").eq(k).append(type3);
 			});

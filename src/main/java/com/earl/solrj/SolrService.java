@@ -30,6 +30,15 @@ import com.earl.solrj.server.SolrServerFactory;
 public class SolrService {
 
 	private SolrServerFactory masterFactory = new SolrServerFactory();
+	/**
+	 * solr搜索结果最小数量.
+	 */
+	private int MINRESULTSIZE = 0;
+	/**
+	 * solr搜索结果最大数量.
+	 */
+	private int MAXRESULTSIZE = 99999;
+	
 
 	/**
 	 * 添加对象索引.
@@ -126,8 +135,8 @@ public class SolrService {
 		String queryString = getQueryStringWithOR(notNullProperties);
 
 		SolrQuery query = new SolrQuery(queryString.toString());
-		query.set("start", 0);
-		query.set("rows", 99999);
+		query.set("start", MINRESULTSIZE);
+		query.set("rows", MAXRESULTSIZE);
 		List<GoodsVo> beans = queryBeans(query);
 
 		return beans;
@@ -155,8 +164,8 @@ public class SolrService {
 		StringBuilder solrQuery = new StringBuilder();
 		solrQuery.append(solr);
 		query.setQuery(solrQuery.toString());
-		query.set("start", 0);
-		query.set("rows", 99999);
+		query.set("start", MINRESULTSIZE);
+		query.set("rows", MAXRESULTSIZE);
 		List<GoodsVo> beans = queryBeans(query);
 		return beans;
 	}
@@ -187,8 +196,8 @@ public class SolrService {
 					.append(str);
 		}
 		query.setQuery(solrQuery.toString());
-		query.set("start", 0);
-		query.set("rows", 99999);
+		query.set("start", MINRESULTSIZE);
+		query.set("rows", MAXRESULTSIZE);
 		List<GoodsVo> beans = queryBeans(query);
 		return beans;
 	}
@@ -231,8 +240,8 @@ public class SolrService {
 			}
 		}
 		query.setQuery(solrQuery.toString());
-		query.set("start", 0);
-		query.set("rows", 99999);
+		query.set("start", MINRESULTSIZE);
+		query.set("rows", MAXRESULTSIZE);
 		List<GoodsVo> beans = queryBeans(query);
 		return beans;
 	}
@@ -256,16 +265,19 @@ public class SolrService {
 
 		SolrClient queryClient = this.masterFactory.getQuerySolrClient();
 		SolrQuery query = new SolrQuery(queryString);
-
+		query.set("start", MINRESULTSIZE);
+		query.set("rows", MAXRESULTSIZE);
 		query.setHighlight(true);
-
-		// 指定属性的高亮
 		query.addHighlightField("goodsname");
+//		query.setHighlightSnippets(3);
+//		query.setHighlightFragsize(100);
+//		query.setHighlightRequireFieldMatch(true);
+//		query.setParam("hl.usePhraseHighlighter", true);
+//		query.setParam("hl.highlightMultiTerm", true);
+		// 指定属性的高亮
 
 		query.setHighlightSimplePre("<font color=\"red\">");
 		query.setHighlightSimplePost("</font>");
-		query.set("start", 0);
-		query.set("rows", 99999);
 		QueryResponse response = queryClient.query(query);
 		SolrDocumentList doucmentList = new SolrDocumentList();
 		SolrDocument document = null;
@@ -341,8 +353,8 @@ public class SolrService {
 		SolrClient querySolrClient = this.masterFactory.getQuerySolrClient();
 		FacetFilter facetFilter = new FacetFilter();
 		SolrQuery solrQuery = new SolrQuery();
-		solrQuery.set("start", 0);
-		solrQuery.set("rows", 99999);
+		solrQuery.set("start", MINRESULTSIZE);
+		solrQuery.set("rows", MAXRESULTSIZE);
 		if (goods.getGoodstype1() == null && goods.getGoodstype2() == null
 				&& goods.getGoodstype3() == null) {
 			solrQuery.setQuery("* : *");
@@ -385,8 +397,8 @@ public class SolrService {
 
 		SolrClient querySolrClient = this.masterFactory.getQuerySolrClient();
 		SolrQuery solrQuery = new SolrQuery();
-		solrQuery.set("start", 0);
-		solrQuery.set("rows", 99999);
+		solrQuery.set("start", MINRESULTSIZE);
+		solrQuery.set("rows", MAXRESULTSIZE);
 		FacetFilter facetFilter = new FacetFilter();
 
 		if (goods.getGoodstype3() != null) {
@@ -529,7 +541,7 @@ public class SolrService {
 		Map<String, Map<String, List<String>>> myMap = new HashMap<String, Map<String, List<String>>>();
 		SolrClient queryClient = this.masterFactory.getQuerySolrClient();
 		SolrQuery query = new SolrQuery("* : *");
-		query.set("start", 0);
+		query.set("start", MINRESULTSIZE);
 		query.set("rows", 9999);
 		QueryResponse response = queryClient.query(query);
 
