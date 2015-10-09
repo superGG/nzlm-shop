@@ -31,6 +31,22 @@ public class BaseSolrUtilTest {
 		GoodsVo goods = new GoodsVo();
 		List<String> list = new ArrayList<String>();
 
+		goods.setId("101");
+		// list.add("容量_32G");
+		list.add("尺寸_5.5");
+		list.add("颜色_金色");
+		// list.add("接口_3.0");
+		goods.setGoodsattributes(list);
+		goods.setIshot(true);
+		goods.setGoodsname("【电信版特价799】-Meizu/魅族 魅蓝note2 双4G版");
+		goods.setGoodspic("http:url:8080");
+		goods.setGoodsprice(1099f);
+		goods.setGoodstype1("电子产品");
+		goods.setGoodstype2("手机");
+		goods.setGoodstype3("魅族");
+		goods.setGoodslabel("魅族_魅蓝_手机");
+		solrUtil.addBeanIndex(goods);
+
 		// goods.setId("6");
 		// // list.add("作用_杀虫");
 		// // list.add("作用于_大田");
@@ -47,23 +63,6 @@ public class BaseSolrUtilTest {
 		// goods.setGoodslabel("种子_玉米_寿禾");
 		// solrUtil.addBeanIndex(goods);
 		//
-		goods.setId("8");
-		// list.add("容量_32G");
-		list.add("尺寸_5.5");
-		list.add("颜色_金色");
-		// list.add("接口_3.0");
-		list.add("生成商_魅族");
-		list.add("品牌_魅族");
-		goods.setGoodsattributes(list);
-		goods.setIshot(true);
-		goods.setGoodsname("魅蓝note");
-		goods.setGoodspic("http:url:8080");
-		goods.setGoodsprice(1099f);
-		goods.setGoodstype1("电子产品");
-		goods.setGoodstype2("手机");
-		goods.setGoodslabel("魅族_魅蓝_手机");
-		solrUtil.addBeanIndex(goods);
-
 		System.out.println("添加索引成功");
 	}
 
@@ -81,14 +80,20 @@ public class BaseSolrUtilTest {
 	@Test
 	public void testDeleteByQuery() throws Exception {
 
-		solrUtil.deleteByQuery("id:6");
+		solrUtil.deleteByQuery("id:63");
+		solrUtil.deleteByQuery("id:64");
+		solrUtil.deleteByQuery("id:67");
+//		solrUtil.deleteByQuery("id:58");
+//		solrUtil.deleteByQuery("id:10");
+//		solrUtil.deleteByQuery("id:15");
+//		solrUtil.deleteByQuery("id:7");
 		System.out.println("删除成功");
 	}
 
 	// 根据关键字查询.
 	@Test
 	public void testQueryByLabel() throws Exception {
-		String label = "魅蓝";
+		String label = "东芝";
 		List<Object> beansList = solrUtil.queryBean(label);
 		for (Object object : beansList) {
 			System.out.println(object.toString());
