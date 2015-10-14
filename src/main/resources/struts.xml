@@ -19,7 +19,7 @@
 				class="com.earl.shopping.interceptor.EscapeInterceptor">
 			</interceptor>
 			<interceptor-stack name="systemInterceptorStack">
-				<interceptor-ref name="escapeInterceptor" />
+				<interceptor-ref name="escapeInterceptor" /> 
 				<interceptor-ref name="defaultStack" />
 			</interceptor-stack>
 		</interceptors>

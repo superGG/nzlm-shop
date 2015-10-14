@@ -19,13 +19,13 @@ public class GoodsActionTest extends StrutsJUnit4TestCase<GoodsAction> {
 
 	@Test
 	public void testAddGoodsAction() throws UnsupportedEncodingException, ServletException {
-		request.addParameter("goodsname", "包邮正品东芝隼闪 32g USB3.0个性迷你防尘抗压创意高速u盘");
-		request.addParameter("goodsattributes", "内存容量_32G;特性_防水;接口_3.0;");
-		request.addParameter("goodsprice", "52.9");
-		request.addParameter("goodspic", "img/dongzhi2.jpg");
+		request.addParameter("goodsname", "园林工具 黑胶柄 五齿耙 草耙 松土工具农具 阳台盆栽花盆耙子");
+		request.addParameter("goodsattributes", "材质_铁;类别_耙子;");
+		request.addParameter("goodsprice", "25.0");
+		request.addParameter("goodspic", "img/asd2.jpg");
 		request.addParameter("ishot", "true");
-		request.addParameter("goodslabel", "u盘_东芝_防水");
-		request.addParameter("typeId", "9");
+		request.addParameter("goodslabel", "农具_RAYKA_耙子");
+		request.addParameter("typeId", "26");
 		logger.debug("pathInfo "+request.getPathInfo());
 		String res = executeAction("/goods_addGoods.action");
 		System.out.println(res);

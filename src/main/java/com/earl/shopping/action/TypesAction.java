@@ -6,9 +6,7 @@ import org.apache.logging.log4j.Logger;
 import com.earl.solrj.query.pojo.TypesPo;
 
 /**
- * 
- * 用途+action 如Demo+Action-->DemoAction
- * 
+ * 类别管理的action层.
  * @author Administrator
  * 
  */
@@ -23,7 +21,6 @@ public class TypesAction extends BaseAction<TypesPo> {
 
 	// 添加索引.
 	public void addCategory() throws Exception {
-		// 从前端获取到的Po 转成 Vo 再进行,同时保存po到数据库
 		typesServer.save(model);
 		
 	}

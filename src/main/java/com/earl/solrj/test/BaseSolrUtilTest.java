@@ -80,9 +80,9 @@ public class BaseSolrUtilTest {
 	@Test
 	public void testDeleteByQuery() throws Exception {
 
-		solrUtil.deleteByQuery("id:63");
-		solrUtil.deleteByQuery("id:64");
-		solrUtil.deleteByQuery("id:67");
+		solrUtil.deleteByQuery("id:130");
+//		solrUtil.deleteByQuery("id:64");
+//		solrUtil.deleteByQuery("id:67");
 //		solrUtil.deleteByQuery("id:58");
 //		solrUtil.deleteByQuery("id:10");
 //		solrUtil.deleteByQuery("id:15");
@@ -93,7 +93,7 @@ public class BaseSolrUtilTest {
 	// 根据关键字查询.
 	@Test
 	public void testQueryByLabel() throws Exception {
-		String label = "东芝";
+		String label = "太阳";
 		List<Object> beansList = solrUtil.queryBean(label);
 		for (Object object : beansList) {
 			System.out.println(object.toString());

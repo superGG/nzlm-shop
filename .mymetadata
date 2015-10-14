@@ -4,7 +4,7 @@
   name="shoppingsolr2"
   id="myeclipse.1442719121792"
   context-root="/shoppingsolr2"
-  j2ee-spec="6.0"
+  j2ee-spec="1.7"
   archive="shoppingsolr2.war">
   <attributes>
     <attribute name="webrootdir" value="src/main/webapp" />

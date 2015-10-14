@@ -14,9 +14,7 @@ import com.earl.solrj.query.pojo.GoodsVo;
 import com.earl.util.ToJson;
 
 /**
- * 
- * 用途+action 如Demo+Action-->DemoAction
- * 
+ * 利用solr搜索商品的action层.
  * @author Administrator
  * 
  */
@@ -106,7 +104,7 @@ public class SolrAction extends BaseAction<GoodsVo> {
 
 	/**
 	 * 查询价格区间的商品.
-	 * 
+	 * @author 宋文光.
 	 * @throws Exception
 	 */
 	public String queryByPrice() throws Exception {
@@ -172,9 +170,6 @@ public class SolrAction extends BaseAction<GoodsVo> {
 	 * 查询热点商品.
 	 * 
 	 * @author 宋文光.
-	 * 
-	 * @return
-	 * 
 	 * @throws IOException
 	 * @throws SolrServerException
 	 * 
@@ -216,7 +211,7 @@ public class SolrAction extends BaseAction<GoodsVo> {
 
 	/**
 	 * 根据类别查询商品的属性. 赋值给Map<String,List<String>>
-	 * 
+	 * @author 宋文光.
 	 * @throws Exception
 	 */
 	public String getAttrbutes() throws Exception {

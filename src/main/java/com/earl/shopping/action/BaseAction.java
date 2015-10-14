@@ -14,7 +14,12 @@ import com.earl.shopping.serverImpl.GoodsServiceImpl;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
-//默认是类简单名称，首字母小写
+/**
+ * 通用的增删改查action层.
+ * @author Administrator
+ *
+ * @param <T>
+ */
 public class BaseAction<T> extends ActionSupport implements RequestAware,
 		SessionAware, ApplicationAware, ModelDriven<T> {
 
@@ -30,17 +35,17 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,
 	protected Map<String, Object> application;
 
 	protected InputStream jsonInputStream;
-	
+
 	public InputStream getJsonInputStream() {
 		return jsonInputStream;
 	}
-	//TODO 需要手动注入Server
-	protected GoodsService goodsServer = GoodsServiceImpl.getInstance();
-	
-	protected TypesService typesServer;
-	
 
-	@SuppressWarnings("unchecked")
+	// TODO 需要手动注入Server
+	protected GoodsService goodsServer = GoodsServiceImpl.getInstance();
+
+	protected TypesService typesServer;
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public BaseAction() {
 		ParameterizedType type = (ParameterizedType) this.getClass()
 				.getGenericSuperclass();

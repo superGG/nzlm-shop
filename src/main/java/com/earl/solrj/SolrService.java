@@ -184,9 +184,11 @@ public class SolrService {
 			throws Exception {
 		SolrQuery query = new SolrQuery();
 		Iterator<String> iterator = list.iterator();
-		String solr = "goodstype2:" + goods.getGoodstype2();
+		String solr = null;
 		if (goods.getGoodstype3() != null) {
 			solr = "goodstype3:" + goods.getGoodstype3();
+		} else {
+			System.out.println("goodstype3 is null, couldn't query");
 		}
 		StringBuilder solrQuery = new StringBuilder();
 		solrQuery.append(solr);
@@ -260,7 +262,7 @@ public class SolrService {
 	 * @throws IllegalArgumentException 
 	 */
 	public List<Object> queryBean(String keyword) throws SolrServerException, IOException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-		// 得到查询语句 //OR 连接查询语句
+		// 得到查询语句
 		String queryString = getSpecifyQueryString(keyword);
 
 		SolrClient queryClient = this.masterFactory.getQuerySolrClient();
@@ -268,13 +270,8 @@ public class SolrService {
 		query.set("start", MINRESULTSIZE);
 		query.set("rows", MAXRESULTSIZE);
 		query.setHighlight(true);
-		query.addHighlightField("goodsname");
-//		query.setHighlightSnippets(3);
-//		query.setHighlightFragsize(100);
-//		query.setHighlightRequireFieldMatch(true);
-//		query.setParam("hl.usePhraseHighlighter", true);
-//		query.setParam("hl.highlightMultiTerm", true);
 		// 指定属性的高亮
+		query.addHighlightField("goodsname");
 
 		query.setHighlightSimplePre("<font color=\"red\">");
 		query.setHighlightSimplePost("</font>");
@@ -404,7 +401,7 @@ public class SolrService {
 		if (goods.getGoodstype3() != null) {
 			solrQuery.setQuery("goodstype3:" + goods.getGoodstype3());
 		} else {
-			solrQuery.setQuery("goodstype2:" + goods.getGoodstype2());
+			System.out.println("goodstype3 is null, couldn't query ");
 		}
 		facetFilter.addFacetField("goodsattributes");
 
@@ -531,18 +528,19 @@ public class SolrService {
 
 	/**
 	 * 获取全部类别.
-	 * 
+	 * @author 黄祥谦.
 	 * @return myMap 全部类别.
 	 * @throws IOException If there is a low-level I/O error.
 	 * @throws SolrServerException if there is an error on the server
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public List getCategory() throws SolrServerException, IOException
 			{
 		Map<String, Map<String, List<String>>> myMap = new HashMap<String, Map<String, List<String>>>();
 		SolrClient queryClient = this.masterFactory.getQuerySolrClient();
 		SolrQuery query = new SolrQuery("* : *");
 		query.set("start", MINRESULTSIZE);
-		query.set("rows", 9999);
+		query.set("rows", MAXRESULTSIZE);
 		QueryResponse response = queryClient.query(query);
 
 		List<GoodsVo> beans = response.getBeans(GoodsVo.class);

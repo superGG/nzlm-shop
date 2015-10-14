@@ -2,12 +2,14 @@ package com.earl.util;
 
 /**
  * 字符串工具类
+ * 
  * @author liufl / 2014年3月18日
  */
 public abstract class StringUtils {
 
 	/**
 	 * 字符串是空的
+	 * 
 	 * @param str
 	 * @return
 	 */
@@ -17,6 +19,7 @@ public abstract class StringUtils {
 
 	/**
 	 * 字符串是空白
+	 * 
 	 * @param str
 	 * @return
 	 */
@@ -26,6 +29,7 @@ public abstract class StringUtils {
 
 	/**
 	 * 字符串不是空白
+	 * 
 	 * @param str
 	 * @return
 	 */
