@@ -9,9 +9,7 @@ import com.earl.solrj.query.pojo.GoodsPo;
 import com.earl.solrj.query.pojo.GoodsVo;
 
 /**
- * 
- * 用途+action 如Demo+Action-->DemoAction
- * 
+ * 商品记录的action层.
  * @author Administrator
  * 
  */
@@ -28,23 +26,10 @@ public class GoodsAction extends BaseAction<GoodsPo> {
 	private SolrService solrServer = new SolrService();
 
 	/**
-	 * 搜索的关键字,直接映射到goodslable,goodsname.
+	 * 添加一条商品记录的同时添加一条索引.
+	 * @throws Exception
 	 */
-	private String keyWord;
-
-	
-
-	public String getKeyWord() {
-		return keyWord;
-	}
-
-	public void setKeyWord(String keyWord) {
-		this.keyWord = keyWord;
-	}
-
-	// 添加索引.
 	public void addGoods() throws Exception {
-		// 从前端获取到的Po 转成 Vo 再进行,同时保存po到数据库
 		goodsServer.save(model);
 		GoodsVo goodsVo = goodsServer.PoToVo(model);
 		solrServer.addBeanIndex(goodsVo);

@@ -8,9 +8,9 @@ import org.apache.solr.client.solrj.SolrQuery;
 import com.earl.solrj.query.QueryDecorate;
 import com.earl.util.Assert;
 
-
 /**
  * 简单高亮显示过滤器
+ * 
  * @author liufl / 2014年8月4日
  */
 public class SimpleHighLightDecorate implements QueryDecorate {
@@ -21,6 +21,7 @@ public class SimpleHighLightDecorate implements QueryDecorate {
 
 	/**
 	 * 取出高亮字段列表
+	 * 
 	 * @return
 	 */
 	public List<String> getFields() {
@@ -29,6 +30,7 @@ public class SimpleHighLightDecorate implements QueryDecorate {
 
 	/**
 	 * 增加高亮字段
+	 * 
 	 * @param field
 	 * @return
 	 */
@@ -39,7 +41,9 @@ public class SimpleHighLightDecorate implements QueryDecorate {
 
 	/**
 	 * 设置高亮字段列表
-	 * @param fields 字段列表。不允许为空。
+	 * 
+	 * @param fields
+	 *            字段列表。不允许为空。
 	 */
 	public void setFields(List<String> fields) {
 		Assert.notEmpty(fields, "no fields is set.");
@@ -48,6 +52,7 @@ public class SimpleHighLightDecorate implements QueryDecorate {
 
 	/**
 	 * 取出高亮区域前缀
+	 * 
 	 * @return
 	 */
 	public String getPre() {
@@ -56,6 +61,7 @@ public class SimpleHighLightDecorate implements QueryDecorate {
 
 	/**
 	 * 设置高亮区域前缀
+	 * 
 	 * @param pre
 	 */
 	public void setPre(String pre) {
@@ -64,6 +70,7 @@ public class SimpleHighLightDecorate implements QueryDecorate {
 
 	/**
 	 * 取出高亮区域后缀
+	 * 
 	 * @return
 	 */
 	public String getPost() {
@@ -72,6 +79,7 @@ public class SimpleHighLightDecorate implements QueryDecorate {
 
 	/**
 	 * 设置高亮区域后缀
+	 * 
 	 * @param post
 	 */
 	public void setPost(String post) {

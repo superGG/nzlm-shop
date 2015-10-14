@@ -8,9 +8,9 @@ import org.apache.solr.client.solrj.SolrQuery;
 import com.earl.solrj.query.BaseQuery;
 import com.earl.solrj.query.QueryDecorate;
 
-
 /**
  * 查询结果约束
+ * 
  * @author liufl / 2014年3月18日
  */
 public class FilterQueryFilter implements QueryDecorate {
@@ -19,7 +19,9 @@ public class FilterQueryFilter implements QueryDecorate {
 
 	/**
 	 * 增加过滤语句
-	 * @param fq 过滤语句
+	 * 
+	 * @param fq
+	 *            过滤语句
 	 * @return
 	 */
 	public FilterQueryFilter addFilterQuery(String fq) {
@@ -29,6 +31,7 @@ public class FilterQueryFilter implements QueryDecorate {
 
 	/**
 	 * 增加过滤查询
+	 * 
 	 * @param fq
 	 * @return
 	 */

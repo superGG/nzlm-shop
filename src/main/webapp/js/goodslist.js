@@ -28,6 +28,7 @@ $(function () {
     $(".button.cw-icon").click(function(event){
     	console.log($("#key").val());
     	$(".classification").hide();
+    	$(".sort").hide();
     	 $.post('http://localhost:8080/shoppingsolr2/solr_queryKeyWord.action',{'keyWord':$("#key").val()},
          		function(data){
              console.log(eval(data));

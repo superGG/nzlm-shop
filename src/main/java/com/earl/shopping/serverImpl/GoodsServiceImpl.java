@@ -27,49 +27,49 @@ public class GoodsServiceImpl extends BaseServiceImpl<GoodsPo> implements
 	GoodsDao goodsDao = new GoodsDaoImpl();
 	TypesDao typesDao = new TypesDaoImpl();
 	public static GoodsService goodsService;
-	private GoodsServiceImpl(){
+
+	private GoodsServiceImpl() {
 		this.baseDao = goodsDao;
 	}
 
 	@Override
-	public void save(GoodsPo goods){
+	public void save(GoodsPo goods) {
 		super.save(goods);
-		
-		
+
 	}
-	
+
 	@Override
-	public GoodsVo PoToVo(GoodsPo goods) throws IllegalAccessException, InvocationTargetException{
+	public GoodsVo PoToVo(GoodsPo goods) throws IllegalAccessException,
+			InvocationTargetException {
 		GoodsVo goodsVo = new GoodsVo();
-		//属性之间的分割符；
+		// 属性之间的分割符；
 		String[] split = goods.getGoodsattributes().split(";");
 		ArrayList<String> attributeList = new ArrayList<String>();
 		for (String string : split) {
 			attributeList.add(string);
 		}
 		goods.setGoodsattributes(null);
-			BeanUtils.copyProperties(goodsVo, goods);
+		BeanUtils.copyProperties(goodsVo, goods);
 		goodsVo.setGoodsattributes(attributeList);
-		getTypes(goods,goodsVo);
+		getTypes(goods, goodsVo);
 		return goodsVo;
 	}
-	
+
 	@Override
 	public void deleteById(Integer id) {
 		super.deleteById(id);
 	}
-	
+
 	public void update(GoodsPo goods) {
 		super.update(goods);
 	}
-	
+
 	public GoodsPo get(Integer id) {
 		return (GoodsPo) super.get(id);
 	}
-	
-	
-	public List<GoodsPo> queryByWord(GoodsPo goods){
-		
+
+	public List<GoodsPo> queryByWord(GoodsPo goods) {
+
 		return null;
 	}
 
@@ -83,13 +83,12 @@ public class GoodsServiceImpl extends BaseServiceImpl<GoodsPo> implements
 		goodsVo.setGoodstype1(types1.getTypeName());
 		return goodsVo;
 	}
-	
+
 	public static GoodsService getInstance() {
-		if(goodsService == null){
+		if (goodsService == null) {
 			goodsService = new GoodsServiceImpl();
 		}
 		return goodsService;
 	}
-	
-	
+
 }
