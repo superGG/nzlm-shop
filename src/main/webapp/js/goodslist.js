@@ -6,6 +6,7 @@ $(function () {
 
     var attributename = tmptype.substr(0,tmptype.lastIndexOf("="));
     var attributevalue =decodeURIComponent(tmptype.substr(tmptype.lastIndexOf("=")+1));
+    var autoComplete = null;
     console.log("name"+attributename);
     console.log("value"+attributevalue);
 
@@ -131,6 +132,16 @@ $(function () {
 
     });
 
+    $(".text").keyup(function(){
+    	console.log($(this).val());
+    	 $.post('http://localhost:8080/shoppingsolr2/solr_autoComplete.action',{'keyWord':$('.text').val()},
+           		function(data){
+               console.log(eval(data));
+               autoComplete = eval(data);
+               console.log(autoComplete);
+           });
+    });
+    
     $.each(keyWordGoods, function (i, data) {
         var goods = $("<li></li>").append(
             $("<div class='good_img'></div>").append(

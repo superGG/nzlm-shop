@@ -16,6 +16,8 @@ import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.response.FacetField;
 import org.apache.solr.client.solrj.response.FacetField.Count;
 import org.apache.solr.client.solrj.response.QueryResponse;
+import org.apache.solr.client.solrj.response.SpellCheckResponse;
+import org.apache.solr.client.solrj.response.SpellCheckResponse.Suggestion;
 import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrDocumentList;
 
@@ -589,5 +591,42 @@ public class SolrService {
 			datalist.add(tmpmap);
 		}
 		return datalist;
+	}
+
+	/**
+	 * 完善搜索词.
+	 * 
+	 * @author 黄祥谦.
+	 * @return List<String> 搜索关键字数组
+	 * 
+	 * @throws IOException
+	 * @throws SolrServerException
+	 */
+	public List<String> autocomplete(String word) {
+		// TODO Auto-generated method stub
+		SolrQuery query = new SolrQuery();
+		query.setRequestHandler("/suggest");
+		query.setQuery(word);
+		SolrClient queryClient = this.masterFactory.getQuerySolrClient();
+		try {
+	        SpellCheckResponse spellCheckResponse = queryClient.query(
+	                query).getSpellCheckResponse();
+	        // solr 数字拼写提示没有返回
+	        if (spellCheckResponse == null) {
+	            return null;
+	        }
+	        
+	        List<Suggestion> suggestions = spellCheckResponse.getSuggestions();
+	        if (suggestions.size() == 0) {
+	            return null;
+	        } else {
+	            Suggestion suggestion = suggestions.get(suggestions.size()-1);
+	            return suggestion.getAlternatives();
+	        }
+	    } catch (Exception e) {
+//	        log.error("获取推荐词时遇到错误:", e);
+	    	e.printStackTrace();
+	        return null;
+		}
 	}
 }
