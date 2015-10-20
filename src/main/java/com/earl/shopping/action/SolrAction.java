@@ -3,6 +3,7 @@ package com.earl.shopping.action;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.InvocationTargetException;
 
 import org.apache.logging.log4j.LogManager;
@@ -236,6 +237,22 @@ public class SolrAction extends BaseAction<GoodsVo> {
 	 */
 	public String getCategory() throws SolrServerException, IOException {
 		String jsonString = ToJson.getGson().toJson(solrServer.getCategory());
+		logger.debug(jsonString);
+		jsonInputStream = new ByteArrayInputStream(jsonString.getBytes("utf-8"));
+		return "done";
+	}
+	
+	/**
+	 * 完善搜索词.
+	 * 
+	 * @author 黄祥谦.
+	 * @return 
+	 * 
+	 * @throws IOException
+	 * @throws SolrServerException
+	 */
+	public String autoComplete() throws UnsupportedEncodingException{
+		String jsonString = ToJson.getGson().toJson(solrServer.autocomplete(keyWord));
 		logger.debug(jsonString);
 		jsonInputStream = new ByteArrayInputStream(jsonString.getBytes("utf-8"));
 		return "done";
