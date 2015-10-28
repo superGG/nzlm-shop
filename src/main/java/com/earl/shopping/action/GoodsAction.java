@@ -62,4 +62,5 @@ public class GoodsAction extends BaseAction<GoodsPo> {
 		BeanUtils.copyProperties(goodsVo, model);
 		solrServer.addBeanIndex(goodsVo);
 	}
+		
 }

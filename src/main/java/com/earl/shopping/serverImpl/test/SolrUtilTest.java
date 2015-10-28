@@ -82,7 +82,7 @@ public class SolrUtilTest {
 	@Test
 	public void testDeleteByQuery() throws Exception {
 
-		solrUtil.deleteByQuery("id:*");
+		solrUtil.deleteByQuery("goodstype3:苹果5");
 		System.out.println("删除成功");
 	}
 
