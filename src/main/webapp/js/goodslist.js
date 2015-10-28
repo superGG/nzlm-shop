@@ -133,14 +133,33 @@ $(function () {
     });
 
     $(".text").keyup(function(){
-    	console.log($(this).val());
     	 $.post('http://localhost:8080/shoppingsolr2/solr_autoComplete.action',{'keyWord':$('.text').val()},
+//    	$.post('autoComplete.txt',{'keyWord':$('.text').val()},
            		function(data){
-               console.log(eval(data));
                autoComplete = eval(data);
-               console.log(autoComplete);
+               
+               if(autoComplete!= null){
+            	   
+            	   $('.form .tips ul').html('');
+            	   
+            	   autoComplete.forEach(function(item){
+            		   $('.form .tips ul').append($('<li></li>').html(item));
+            	   });
+            	   
+            	   $('.form .tips ul li').bind('click',function(e){
+            		   
+            		   console.log('ninico')
+            		   $('.text').val($(this).html());
+            		   $('.form .tips').css('display','none');
+            	   });
+            	   
+            	   
+            	   $('.form .tips').css('display','block');
+            	   
+               }
            });
     });
+
     
     $.each(keyWordGoods, function (i, data) {
         var goods = $("<li></li>").append(

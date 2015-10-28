@@ -199,6 +199,23 @@ header,nav,footer{
   width: 28px;
 }
 
+.form .tips {
+  background-color: #fff;
+  position: absolute;
+  width: 222px;
+  /* height: 30px; */
+  padding: 5px;
+  text-align: left;
+  margin-top: 34px;
+  border: 1px solid red;
+  display: none;
+}
+
+.form .tips li {
+	
+	cursor: pointer;
+}
+
 
 
 .main .container .classification{
